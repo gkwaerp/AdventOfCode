@@ -9,21 +9,38 @@
 import UIKit
 
 class Day01VC: UIViewController {
-    private struct Monster: Codable {
-        let age: Int
-        let hp: Int
-    }
-    
-    private var monsters = [Monster]()
+    private var frequencyChanges = [Int]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = .green
-
-        self.loadMonsters()
+        self.loadFrequencies()
+        self.solveFirst()
+        self.solveSecond()
     }
 
-    private func loadMonsters() {
-        self.monsters = FileLoader.loadJSON(fileName: "Day01Input", parseType: [Monster].self)
+    private func loadFrequencies() {
+        self.frequencyChanges = FileLoader.loadText(fileName: "Day01Input2").compactMap({Int($0)})
+    }
+
+    private func solveFirst() {
+        print("Resulting Frequency = \(self.frequencyChanges.reduce(0, +))")
+    }
+
+    private func solveSecond() {
+        var dictionary = [Int: Bool]()
+        var currFrequency = 0
+        while (true) {
+            for frequency in self.frequencyChanges {
+                if dictionary[currFrequency] != nil {
+                    print("First repeated frequency = \(currFrequency)")
+                    return
+                } else {
+                    dictionary[currFrequency] = true
+                }
+                currFrequency += frequency
+            }
+        }
     }
 }
