@@ -9,7 +9,7 @@
 import Foundation
 
 class FileLoader {
-    static func load<T: Decodable>(fileName: String, fileType: String?, parseType: T.Type) -> T {
+    static func load<T: Decodable>(fileName: String, fileType: String? = nil, parseType: T.Type) -> T {
         let jsonDecoder = JSONDecoder()
         let path = Bundle.main.path(forResource: fileName, ofType: fileType)!
         let url = URL(fileURLWithPath: path)

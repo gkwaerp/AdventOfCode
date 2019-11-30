@@ -24,6 +24,6 @@ class Day01VC: UIViewController {
     }
 
     private func loadMonsters() {
-        self.monsters = FileLoader.load(fileName: "Day01Settings", fileType: "txt", parseType: [Monster].self)
+        self.monsters = FileLoader.load(fileName: "Day01Input", parseType: [Monster].self)
     }
 }
