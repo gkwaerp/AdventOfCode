@@ -13,6 +13,10 @@
 		0470DA462392DC6400DDAFCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA442392DC6400DDAFCB /* Main.storyboard */; };
 		0470DA482392DC6500DDAFCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA472392DC6500DDAFCB /* Assets.xcassets */; };
 		0470DA4B2392DC6500DDAFCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA492392DC6500DDAFCB /* LaunchScreen.storyboard */; };
+		0470DA542392DD0A00DDAFCB /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA532392DD0A00DDAFCB /* UIView+Ext.swift */; };
+		0470DA572392E0CB00DDAFCB /* Day01VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA562392E0CB00DDAFCB /* Day01VC.swift */; };
+		0470DA592392E19900DDAFCB /* Day01Settings.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA582392E19900DDAFCB /* Day01Settings.txt */; };
+		0470DA5B2392E48A00DDAFCB /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA5A2392E48A00DDAFCB /* FileLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		0470DA472392DC6500DDAFCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0470DA4A2392DC6500DDAFCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0470DA4C2392DC6500DDAFCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0470DA532392DD0A00DDAFCB /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		0470DA562392E0CB00DDAFCB /* Day01VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day01VC.swift; sourceTree = "<group>"; };
+		0470DA582392E19900DDAFCB /* Day01Settings.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day01Settings.txt; sourceTree = "<group>"; };
+		0470DA5A2392E48A00DDAFCB /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,8 @@
 		0470DA3D2392DC6400DDAFCB /* AdventOfCode2019 */ = {
 			isa = PBXGroup;
 			children = (
+				0470DA552392E0BC00DDAFCB /* Day01 */,
+				0470DA522392DD0000DDAFCB /* Helpers */,
 				0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */,
 				0470DA402392DC6400DDAFCB /* SceneDelegate.swift */,
 				0470DA422392DC6400DDAFCB /* ViewController.swift */,
@@ -65,6 +75,24 @@
 				0470DA4C2392DC6500DDAFCB /* Info.plist */,
 			);
 			path = AdventOfCode2019;
+			sourceTree = "<group>";
+		};
+		0470DA522392DD0000DDAFCB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0470DA532392DD0A00DDAFCB /* UIView+Ext.swift */,
+				0470DA5A2392E48A00DDAFCB /* FileLoader.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0470DA552392E0BC00DDAFCB /* Day01 */ = {
+			isa = PBXGroup;
+			children = (
+				0470DA562392E0CB00DDAFCB /* Day01VC.swift */,
+				0470DA582392E19900DDAFCB /* Day01Settings.txt */,
+			);
+			path = Day01;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +156,7 @@
 				0470DA4B2392DC6500DDAFCB /* LaunchScreen.storyboard in Resources */,
 				0470DA482392DC6500DDAFCB /* Assets.xcassets in Resources */,
 				0470DA462392DC6400DDAFCB /* Main.storyboard in Resources */,
+				0470DA592392E19900DDAFCB /* Day01Settings.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +167,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0470DA5B2392E48A00DDAFCB /* FileLoader.swift in Sources */,
+				0470DA542392DD0A00DDAFCB /* UIView+Ext.swift in Sources */,
 				0470DA432392DC6400DDAFCB /* ViewController.swift in Sources */,
+				0470DA572392E0CB00DDAFCB /* Day01VC.swift in Sources */,
 				0470DA3F2392DC6400DDAFCB /* AppDelegate.swift in Sources */,
 				0470DA412392DC6400DDAFCB /* SceneDelegate.swift in Sources */,
 			);
