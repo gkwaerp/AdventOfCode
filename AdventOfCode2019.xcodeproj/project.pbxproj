@@ -17,6 +17,7 @@
 		0470DA572392E0CB00DDAFCB /* Day01VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA562392E0CB00DDAFCB /* Day01VC.swift */; };
 		0470DA592392E19900DDAFCB /* Day01Input in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA582392E19900DDAFCB /* Day01Input */; };
 		0470DA5B2392E48A00DDAFCB /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA5A2392E48A00DDAFCB /* FileLoader.swift */; };
+		0470DA612393D3EF00DDAFCB /* AoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA602393D3EF00DDAFCB /* AoCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		0470DA562392E0CB00DDAFCB /* Day01VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day01VC.swift; sourceTree = "<group>"; };
 		0470DA582392E19900DDAFCB /* Day01Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day01Input; sourceTree = "<group>"; };
 		0470DA5A2392E48A00DDAFCB /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
+		0470DA602393D3EF00DDAFCB /* AoCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AoCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				0470DA532392DD0A00DDAFCB /* UIView+Ext.swift */,
 				0470DA5A2392E48A00DDAFCB /* FileLoader.swift */,
+				0470DA602393D3EF00DDAFCB /* AoCVC.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				0470DA572392E0CB00DDAFCB /* Day01VC.swift in Sources */,
 				0470DA3F2392DC6400DDAFCB /* AppDelegate.swift in Sources */,
 				0470DA412392DC6400DDAFCB /* SceneDelegate.swift in Sources */,
+				0470DA612393D3EF00DDAFCB /* AoCVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

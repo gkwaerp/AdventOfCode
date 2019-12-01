@@ -8,13 +8,13 @@
 
 import UIKit
 
-class Day01VC: UIViewController {
+class Day01VC: AoCVC {
     private var modules = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .green
+        self.view.backgroundColor = .systemBackground
         self.loadModules()
         self.solveFirst()
         self.solveSecond()
@@ -26,7 +26,7 @@ class Day01VC: UIViewController {
 
     private func solveFirst() {
         let fuel = self.modules.reduce(0, {$0 + self.getFuel(for: $1)})
-        print("Required fuel = \(fuel)")
+        self.setSolution1("\(fuel)")
     }
 
     private func getFuel(for mass: Int) -> Int {
@@ -42,6 +42,6 @@ class Day01VC: UIViewController {
                 fuelToAdd = self.getFuel(for: fuelToAdd)
             }
         }
-        print("Total required fuel = \(totalFuel)")
+        self.setSolution2("\(totalFuel)")
     }
 }
