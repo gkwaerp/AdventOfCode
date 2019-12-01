@@ -28,19 +28,23 @@ class Day01VC: AoCVC {
         self.setSolution1("\(fuel)")
     }
 
-    private func getFuel(for mass: Int) -> Int {
-        return mass / 3 - 2
+    private func solveSecond() {
+        let fuel = self.modules.reduce(0, {$0 + self.getFuel(for: $1, includeFuelMass: true)})
+        self.setSolution2("\(fuel)")
     }
 
-    private func solveSecond() {
-        var totalFuel = 0
-        for module in self.modules {
-            var fuelToAdd = self.getFuel(for: module)
-            while fuelToAdd > 0 {
-                totalFuel += fuelToAdd
-                fuelToAdd = self.getFuel(for: fuelToAdd)
-            }
+    private func getFuel(for mass: Int, includeFuelMass: Bool = false) -> Int {
+        func calcFuel(for mass: Int) -> Int {
+            return mass / 3 - 2
         }
-        self.setSolution2("\(totalFuel)")
+
+        var totalFuel = 0
+        var fuelToAdd = calcFuel(for: mass)
+        while fuelToAdd > 0 {
+            totalFuel += fuelToAdd
+            fuelToAdd = includeFuelMass ? calcFuel(for: fuelToAdd) : 0
+        }
+
+        return totalFuel
     }
 }

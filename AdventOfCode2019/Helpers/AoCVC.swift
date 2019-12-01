@@ -12,6 +12,9 @@ class AoCVC: UIViewController {
     private var solution1Label: UILabel!
     private var solution2Label: UILabel!
 
+    private var startTime = Date()
+    private var solution1Time = Date()
+
     private var label: UILabel {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -37,15 +40,25 @@ class AoCVC: UIViewController {
 
         stackView.addArrangedSubview(self.solution1Label)
         stackView.addArrangedSubview(self.solution2Label)
+
+        self.startTime = Date()
     }
 
     func setSolution1(_ text: String) {
-        self.solution1Label.text = text
-        print("Solution 1: \(text)")
+        self.solution1Time = Date()
+        let fullText = "\(text) -- (\(self.getElapsedTimeString(from: self.startTime)))"
+        self.solution1Label.text = fullText
+        print("Solution 1: \(fullText)")
     }
 
     func setSolution2(_ text: String) {
-        self.solution2Label.text = text
-        print("Solution 2: \(text)")
+        let fullText = "\(text) -- (\(self.getElapsedTimeString(from: self.solution1Time)))"
+        self.solution2Label.text = fullText
+        print("Solution 2: \(fullText)")
+    }
+
+    private func getElapsedTimeString(from date: Date) -> String {
+        let elapsedTime = Date().timeIntervalSince(date)
+        return String(format: "%.4f", elapsedTime)
     }
 }
