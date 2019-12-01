@@ -12,7 +12,7 @@ class Overview2018ViewController: UIViewController {
     private let mainStackView = UIStackView()
     private var subStackViews = [UIStackView]()
 
-    private let enabledDays = Set([1, 2])
+    private let enabledDays = Set([1, 2, 3])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +61,7 @@ class Overview2018ViewController: UIViewController {
         switch sender.tag {
         case 1: vc = Day01VC_2018()
         case 2: vc = Day02VC_2018()
+        case 3: vc = Day03VC_2018()
         default: break
         }
         

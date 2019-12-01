@@ -29,15 +29,15 @@ class Day01VC_2018: AoCVC {
     }
 
     private func solveSecond() {
-        var dictionary = [Int: Bool]()
+        var set = Set<Int>()
         var currentFrequency = 0
         while (true) {
             for change in self.frequencyChanges {
-                if dictionary[currentFrequency] != nil {
+                if set.contains(change) {
                     self.setSolution2("\(currentFrequency)")
                     return
                 } else {
-                    dictionary[currentFrequency] = true
+                    set.insert(currentFrequency)
                 }
                 currentFrequency += change
             }

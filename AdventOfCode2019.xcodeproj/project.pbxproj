@@ -25,6 +25,8 @@
 		0470DA6D2394461800DDAFCB /* Day1Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA6C2394461800DDAFCB /* Day1Input_2018 */; };
 		0470DA712394495300DDAFCB /* Day02VC_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA702394495300DDAFCB /* Day02VC_2018.swift */; };
 		0470DA7323944C9500DDAFCB /* Day2Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA7223944C9500DDAFCB /* Day2Input_2018 */; };
+		0470DA762394516F00DDAFCB /* Day03VC_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA752394516F00DDAFCB /* Day03VC_2018.swift */; };
+		0470DA78239455A800DDAFCB /* Day03Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA77239455A800DDAFCB /* Day03Input_2018 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		0470DA6C2394461800DDAFCB /* Day1Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day1Input_2018; sourceTree = "<group>"; };
 		0470DA702394495300DDAFCB /* Day02VC_2018.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day02VC_2018.swift; sourceTree = "<group>"; };
 		0470DA7223944C9500DDAFCB /* Day2Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day2Input_2018; sourceTree = "<group>"; };
+		0470DA752394516F00DDAFCB /* Day03VC_2018.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03VC_2018.swift; sourceTree = "<group>"; };
+		0470DA77239455A800DDAFCB /* Day03Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day03Input_2018; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 			children = (
 				0470DA6E2394493700DDAFCB /* Day01 */,
 				0470DA6F2394494500DDAFCB /* Day02 */,
+				0470DA742394515F00DDAFCB /* Day03 */,
 				0470DA6823943CDD00DDAFCB /* Overview2018ViewController.swift */,
 			);
 			path = 2018;
@@ -149,6 +154,15 @@
 				0470DA7223944C9500DDAFCB /* Day2Input_2018 */,
 			);
 			path = Day02;
+			sourceTree = "<group>";
+		};
+		0470DA742394515F00DDAFCB /* Day03 */ = {
+			isa = PBXGroup;
+			children = (
+				0470DA752394516F00DDAFCB /* Day03VC_2018.swift */,
+				0470DA77239455A800DDAFCB /* Day03Input_2018 */,
+			);
+			path = Day03;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +227,7 @@
 				0470DA482392DC6500DDAFCB /* Assets.xcassets in Resources */,
 				0470DA462392DC6400DDAFCB /* Main.storyboard in Resources */,
 				0470DA6D2394461800DDAFCB /* Day1Input_2018 in Resources */,
+				0470DA78239455A800DDAFCB /* Day03Input_2018 in Resources */,
 				0470DA7323944C9500DDAFCB /* Day2Input_2018 in Resources */,
 				0470DA592392E19900DDAFCB /* Day01Input in Resources */,
 			);
@@ -236,6 +251,7 @@
 				0470DA412392DC6400DDAFCB /* SceneDelegate.swift in Sources */,
 				0470DA6B23943D0700DDAFCB /* Day01VC_2018.swift in Sources */,
 				0470DA612393D3EF00DDAFCB /* AoCVC.swift in Sources */,
+				0470DA762394516F00DDAFCB /* Day03VC_2018.swift in Sources */,
 				0470DA632393DD1C00DDAFCB /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
