@@ -46,15 +46,15 @@ class AoCVC: UIViewController {
 
     func setSolution1(_ text: String) {
         self.solution1Time = Date()
-        let fullText = "\(text) -- (\(self.getElapsedTimeString(from: self.startTime)))"
+        let fullText = "\(text) (\(self.getElapsedTimeString(from: self.startTime)))"
         self.solution1Label.text = fullText
-        print("Solution 1: \(fullText)")
+        print("\(self.title!) Solution 1: \(fullText)")
     }
 
     func setSolution2(_ text: String) {
         let fullText = "\(text) -- (\(self.getElapsedTimeString(from: self.solution1Time)))"
         self.solution2Label.text = fullText
-        print("Solution 2: \(fullText)")
+        print("\(self.title!) Solution 2: \(fullText)")
     }
 
     private func getElapsedTimeString(from date: Date) -> String {
