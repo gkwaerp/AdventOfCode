@@ -9,38 +9,39 @@
 import UIKit
 
 class Day01VC: UIViewController {
-    private var frequencyChanges = [Int]()
+    private var modules = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = .green
-        self.loadFrequencies()
+        self.loadModules()
         self.solveFirst()
         self.solveSecond()
     }
 
-    private func loadFrequencies() {
-        self.frequencyChanges = FileLoader.loadText(fileName: "Day01Input2").compactMap({Int($0)})
+    private func loadModules() {
+        self.modules = FileLoader.loadText(fileName: "Day01Input").compactMap({Int($0)})
     }
 
     private func solveFirst() {
-        print("Resulting Frequency = \(self.frequencyChanges.reduce(0, +))")
+        let fuel = self.modules.reduce(0, {$0 + self.getFuel(for: $1)})
+        print("Required fuel = \(fuel)")
+    }
+
+    private func getFuel(for mass: Int) -> Int {
+        return mass / 3 - 2
     }
 
     private func solveSecond() {
-        var dictionary = [Int: Bool]()
-        var currFrequency = 0
-        while (true) {
-            for frequency in self.frequencyChanges {
-                if dictionary[currFrequency] != nil {
-                    print("First repeated frequency = \(currFrequency)")
-                    return
-                } else {
-                    dictionary[currFrequency] = true
-                }
-                currFrequency += frequency
+        var totalFuel = 0
+        for module in self.modules {
+            var fuelToAdd = self.getFuel(for: module)
+            while fuelToAdd > 0 {
+                totalFuel += fuelToAdd
+                fuelToAdd = self.getFuel(for: fuelToAdd)
             }
         }
+        print("Total required fuel = \(totalFuel)")
     }
 }
