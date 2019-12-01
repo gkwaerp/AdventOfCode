@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  Overview2018ViewController.swift
 //  AdventOfCode2019
 //
-//  Created by Geir-Kåre S. Wærp on 30/11/2019.
+//  Created by Geir-Kåre S. Wærp on 01/12/2019.
 //  Copyright © 2019 GK. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class Overview2018ViewController: UIViewController {
     private let mainStackView = UIStackView()
     private var subStackViews = [UIStackView]()
 
@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Advent of Code 2019"
+        self.title = "Advent of Code 2018"
+        self.view.backgroundColor = .systemBackground
         
         self.configureStackViews()
         self.configureButtons()
@@ -58,8 +59,8 @@ class ViewController: UIViewController {
     @objc func buttonTapped(sender: UIButton) {
         var vc: UIViewController? = nil
         switch sender.tag {
-        case 1: vc = Day01VC()
-        case 2: vc = Day02VC()
+        case 1: vc = Day01VC_2018()
+        case 2: vc = Day02VC_2018()
         default: break
         }
         

@@ -19,6 +19,7 @@ class AoCVC: UIViewController {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
+        label.numberOfLines = 2
         return label
     }
 
