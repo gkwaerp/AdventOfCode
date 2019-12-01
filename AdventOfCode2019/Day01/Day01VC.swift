@@ -14,7 +14,6 @@ class Day01VC: AoCVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .systemBackground
         self.loadModules()
         self.solveFirst()
         self.solveSecond()
