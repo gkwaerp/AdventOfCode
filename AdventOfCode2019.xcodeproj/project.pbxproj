@@ -19,6 +19,7 @@
 		0470DA5B2392E48A00DDAFCB /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA5A2392E48A00DDAFCB /* FileLoader.swift */; };
 		0470DA612393D3EF00DDAFCB /* AoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA602393D3EF00DDAFCB /* AoCVC.swift */; };
 		0470DA632393DD1C00DDAFCB /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA622393DD1C00DDAFCB /* Math.swift */; };
+		0470DA662393E30900DDAFCB /* Day02VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA652393E30900DDAFCB /* Day02VC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		0470DA5A2392E48A00DDAFCB /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 		0470DA602393D3EF00DDAFCB /* AoCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AoCVC.swift; sourceTree = "<group>"; };
 		0470DA622393DD1C00DDAFCB /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		0470DA652393E30900DDAFCB /* Day02VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day02VC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				0470DA552392E0BC00DDAFCB /* Day01 */,
+				0470DA642393E2FD00DDAFCB /* Day02 */,
 				0470DA522392DD0000DDAFCB /* Helpers */,
 				0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */,
 				0470DA402392DC6400DDAFCB /* SceneDelegate.swift */,
@@ -99,6 +102,14 @@
 				0470DA582392E19900DDAFCB /* Day01Input */,
 			);
 			path = Day01;
+			sourceTree = "<group>";
+		};
+		0470DA642393E2FD00DDAFCB /* Day02 */ = {
+			isa = PBXGroup;
+			children = (
+				0470DA652393E30900DDAFCB /* Day02VC.swift */,
+			);
+			path = Day02;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 			files = (
 				0470DA5B2392E48A00DDAFCB /* FileLoader.swift in Sources */,
 				0470DA542392DD0A00DDAFCB /* UIView+Ext.swift in Sources */,
+				0470DA662393E30900DDAFCB /* Day02VC.swift in Sources */,
 				0470DA432392DC6400DDAFCB /* ViewController.swift in Sources */,
 				0470DA572392E0CB00DDAFCB /* Day01VC.swift in Sources */,
 				0470DA3F2392DC6400DDAFCB /* AppDelegate.swift in Sources */,

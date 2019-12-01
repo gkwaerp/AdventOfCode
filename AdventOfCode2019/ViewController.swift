@@ -9,8 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let mainStackView = UIStackView()
-    var subStackViews = [UIStackView]()
+    private let mainStackView = UIStackView()
+    private var subStackViews = [UIStackView]()
+
+    private let enabledDays = Set([1])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +49,8 @@ class ViewController: UIViewController {
             button.setTitle("Day \(day)", for: .normal)
             button.tag = day
             button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-            let stackViewIndex = i / 6
+            button.isEnabled = self.enabledDays.contains(day)
+            let stackViewIndex = i % 4
             self.subStackViews[stackViewIndex].addArrangedSubview(button)
         }
     }
@@ -56,6 +59,7 @@ class ViewController: UIViewController {
         var vc: UIViewController? = nil
         switch sender.tag {
         case 1: vc = Day01VC()
+        case 2: vc = Day02VC()
         default: break
         }
         
