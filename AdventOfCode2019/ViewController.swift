@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     private let mainStackView = UIStackView()
     private var subStackViews = [UIStackView]()
 
-    private let enabledDays = Set([1])
+    private let enabledDays = Set([1, 2])
     
     override func viewDidLoad() {
         super.viewDidLoad()
