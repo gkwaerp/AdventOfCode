@@ -8,27 +8,19 @@
 
 import UIKit
 
-class Day01VC: AoCVC {
+class Day01VC: AoCVC, AdventDay {
     private var modules = [Int]()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.loadModules()
-        self.solveFirst()
-        self.solveSecond()
-    }
-
-    private func loadModules() {
+    func loadInput() {
         self.modules = FileLoader.loadText(fileName: "Day01Input").compactMap({Int($0)})
     }
 
-    private func solveFirst() {
+    func solveFirst() {
         let fuel = self.modules.reduce(0, {$0 + self.getFuel(for: $1)})
         self.setSolution1("\(fuel)")
     }
 
-    private func solveSecond() {
+    func solveSecond() {
         let fuel = self.modules.reduce(0, {$0 + self.getFuel(for: $1, recursive: true)})
         self.setSolution2("\(fuel)")
     }

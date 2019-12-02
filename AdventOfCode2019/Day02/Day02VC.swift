@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day02VC: AoCVC {
+class Day02VC: AoCVC, AdventDay {
     class OpcodeMachine {
         enum Opcode {
             case addition(indexA: Int, indexB: Int, resultingIndex: Int)
@@ -84,27 +84,20 @@ class Day02VC: AoCVC {
     }
 
     private var machine: OpcodeMachine!
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        self.loadInput()
-        self.solveFirst()
-        self.solveSecond()
-    }
-
-    private func loadInput() {
+    func loadInput() {
         let line = FileLoader.loadText(fileName: "Day02Input").first!
         let ints = line.components(separatedBy: ",").compactMap({Int($0)})
         self.machine = OpcodeMachine(memory: ints, noun: nil, verb: nil)
     }
 
-    private func solveFirst() {
+    func solveFirst() {
         self.machine.reset(noun: 12, verb: 2)
         let result = self.machine.runProgram()
         self.setSolution1("\(result)")
     }
 
-    private func solveSecond() {
+    func solveSecond() {
         for noun in 0...99 {
             for verb in 0...99 {
                 self.machine.reset(noun: noun, verb: verb)

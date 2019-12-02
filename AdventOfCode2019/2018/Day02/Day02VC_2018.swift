@@ -8,29 +8,15 @@
 
 import UIKit
 
-class Day02VC_2018: AoCVC {
-    var boxIds = [String]()
+class Day02VC_2018: AoCVC, AdventDay {
+    var boxIds = Set<String>()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        self.loadInput()
-        self.solveFirst()
-        self.solveSecond()
+    func loadInput() {
+        self.boxIds = Set(FileLoader.loadText(fileName: "Day2Input_2018"))
     }
 
-    private func loadInput() {
-        self.boxIds = FileLoader.loadText(fileName: "Day2Input_2018")
-//        self.boxIds = ["abcde",
-//                       "fghij",
-//                       "klmno",
-//                       "pqrst",
-//                       "fguij",
-//                       "axcye",
-//                       "wvxyz"]
-    }
-
-    private func solveFirst() {
+    func solveFirst() {
         var count2 = 0
         var count3 = 0
 
@@ -54,7 +40,7 @@ class Day02VC_2018: AoCVC {
         self.setSolution1("\(checksum)")
     }
 
-    private func solveSecond() {
+    func solveSecond() {
         var alreadySeen = [Set<String>]()
 
         for charPositionIndex in 0..<(self.boxIds.first?.count ?? 0) {

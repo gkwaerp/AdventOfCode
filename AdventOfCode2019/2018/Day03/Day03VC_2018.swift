@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day03VC_2018: AoCVC {
+class Day03VC_2018: AoCVC, AdventDay {
     private struct Claim: Hashable {
         struct Position: Hashable {
             let x: Int
@@ -42,24 +42,13 @@ class Day03VC_2018: AoCVC {
         }
     }
 
-    private var claims = [Claim]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private var claims = Set<Claim>()
 
-        self.loadInput()
-        self.solveFirst()
-        self.solveSecond()
+    func loadInput() {
+        self.claims = Set(FileLoader.loadText(fileName: "Day03Input_2018").filter({!$0.isEmpty}).map({Claim(string: $0)}))
     }
 
-    private func loadInput() {
-        self.claims = ["#1 @ 1,3: 4x4",
-                       "#2 @ 3,1: 4x4",
-                       "#3 @ 5,5: 2x2"].map({Claim(string: $0)})
-        self.claims = FileLoader.loadText(fileName: "Day03Input_2018").filter({!$0.isEmpty}).map({Claim(string: $0)})
-    }
-
-    private func solveFirst() {
+    func solveFirst() {
         var set = Set<Claim.Position>()
         var duplicated = Set<Claim.Position>()
         for claim in self.claims {
@@ -75,7 +64,7 @@ class Day03VC_2018: AoCVC {
         self.setSolution1("\(duplicated.count)")
     }
 
-    private func solveSecond() {
+    func solveSecond() {
         var dictionary = [Claim.Position: Claim]()
         var nonOverlappingClaims = Set(self.claims)
         for claim in self.claims {

@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol AdventDay {
+    func loadInput()
+    func solveFirst()
+    func solveSecond()
+}
+
 class AoCVC: UIViewController {
     private var solution1Label: UILabel!
     private var solution2Label: UILabel!
@@ -42,7 +48,14 @@ class AoCVC: UIViewController {
         stackView.addArrangedSubview(self.solution1Label)
         stackView.addArrangedSubview(self.solution2Label)
 
-        self.startTime = Date()
+        if let adventDay = self as? AdventDay {
+            let loadTime = Date()
+            adventDay.loadInput()
+            print("\(self.title!) loaded in \(self.getElapsedTimeString(from: loadTime))")
+            self.startTime = Date()
+            adventDay.solveFirst()
+            adventDay.solveSecond()
+        }
     }
 
     func setSolution1(_ text: String) {

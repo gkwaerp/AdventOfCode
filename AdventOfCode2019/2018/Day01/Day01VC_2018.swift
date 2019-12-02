@@ -8,32 +8,24 @@
 
 import UIKit
 
-class Day01VC_2018: AoCVC {
-    var frequencyChanges = [Int]()
+class Day01VC_2018: AoCVC, AdventDay {
+    private var frequencyChanges = [Int]()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.loadFrequencies()
-        self.solveFirst()
-        self.solveSecond()
-    }
-
-    private func loadFrequencies() {
+    func loadInput() {
         self.frequencyChanges = FileLoader.loadText(fileName: "Day1Input_2018").compactMap({Int($0)})
     }
 
-    private func solveFirst() {
+    func solveFirst() {
         let result = self.frequencyChanges.reduce(0, +)
         self.setSolution1("\(result)")
     }
 
-    private func solveSecond() {
+    func solveSecond() {
         var set = Set<Int>()
         var currentFrequency = 0
         while (true) {
             for change in self.frequencyChanges {
-                if set.contains(change) {
+                if set.contains(currentFrequency) {
                     self.setSolution2("\(currentFrequency)")
                     return
                 } else {
