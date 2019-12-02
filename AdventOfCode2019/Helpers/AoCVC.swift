@@ -47,7 +47,7 @@ class AoCVC: UIViewController {
 
     func setSolution1(_ text: String) {
         self.solution1Time = Date()
-        let fullText = "\(text) (\(self.getElapsedTimeString(from: self.startTime)))"
+        let fullText = "\(text) -- (\(self.getElapsedTimeString(from: self.startTime)))"
         self.solution1Label.text = fullText
         print("\(self.title!) Solution 1: \(fullText)")
     }
