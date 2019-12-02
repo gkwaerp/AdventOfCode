@@ -27,6 +27,7 @@
 		0470DA7323944C9500DDAFCB /* Day2Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA7223944C9500DDAFCB /* Day2Input_2018 */; };
 		0470DA762394516F00DDAFCB /* Day03VC_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA752394516F00DDAFCB /* Day03VC_2018.swift */; };
 		0470DA78239455A800DDAFCB /* Day03Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA77239455A800DDAFCB /* Day03Input_2018 */; };
+		0470DA7D2394D6FC00DDAFCB /* Day02Input in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA7C2394D6FC00DDAFCB /* Day02Input */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		0470DA7223944C9500DDAFCB /* Day2Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day2Input_2018; sourceTree = "<group>"; };
 		0470DA752394516F00DDAFCB /* Day03VC_2018.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03VC_2018.swift; sourceTree = "<group>"; };
 		0470DA77239455A800DDAFCB /* Day03Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day03Input_2018; sourceTree = "<group>"; };
+		0470DA7C2394D6FC00DDAFCB /* Day02Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day02Input; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				0470DA652393E30900DDAFCB /* Day02VC.swift */,
+				0470DA7C2394D6FC00DDAFCB /* Day02Input */,
 			);
 			path = Day02;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			files = (
 				0470DA4B2392DC6500DDAFCB /* LaunchScreen.storyboard in Resources */,
 				0470DA482392DC6500DDAFCB /* Assets.xcassets in Resources */,
+				0470DA7D2394D6FC00DDAFCB /* Day02Input in Resources */,
 				0470DA462392DC6400DDAFCB /* Main.storyboard in Resources */,
 				0470DA6D2394461800DDAFCB /* Day1Input_2018 in Resources */,
 				0470DA78239455A800DDAFCB /* Day03Input_2018 in Resources */,
