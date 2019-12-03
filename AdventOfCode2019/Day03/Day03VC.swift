@@ -33,8 +33,7 @@ class Day03VC: AoCVC, AdventDay {
         var numStepsSoFar = 0
         private mutating func addPoint(_ point: WirePoint) {
             numStepsSoFar += 1
-            self.points.insert(point)
-            if self.dictionary[point] == nil {
+            if self.points.insert(point).inserted {
                 self.dictionary[point] = numStepsSoFar
             }
         }

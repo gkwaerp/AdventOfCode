@@ -53,10 +53,8 @@ class Day03VC_2018: AoCVC, AdventDay {
         var duplicated = Set<Claim.Position>()
         for claim in self.claims {
             for position in claim.positions {
-                if set.contains(position) {
+                if !set.insert(position).inserted {
                     duplicated.insert(position)
-                } else {
-                    set.insert(position)
                 }
             }
         }

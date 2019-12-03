@@ -48,11 +48,9 @@ class Day02VC_2018: AoCVC, AdventDay {
             for id in self.boxIds {
                 var filteredId = id
                 filteredId.remove(at: String.Index(utf16Offset: charPositionIndex, in: id))
-                if alreadySeen[charPositionIndex].contains(filteredId) {
+                if !alreadySeen[charPositionIndex].insert(filteredId).inserted {
                     self.setSolution2(filteredId)
                     return
-                } else {
-                    alreadySeen[charPositionIndex].insert(filteredId)
                 }
             }
         }

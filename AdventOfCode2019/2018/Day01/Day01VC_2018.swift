@@ -25,11 +25,9 @@ class Day01VC_2018: AoCVC, AdventDay {
         var currentFrequency = 0
         while (true) {
             for change in self.frequencyChanges {
-                if set.contains(currentFrequency) {
+                if !set.insert(currentFrequency).inserted {
                     self.setSolution2("\(currentFrequency)")
                     return
-                } else {
-                    set.insert(currentFrequency)
                 }
                 currentFrequency += change
             }
