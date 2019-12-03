@@ -9,29 +9,12 @@
 import UIKit
 
 class Day03VC: AoCVC, AdventDay {
-    struct WirePoint: Hashable {
-        let x: Int
-        let y: Int
-        
-        func distance(to other: WirePoint = .origin) -> Int {
-            return abs(self.x - other.x) + abs(self.y - other.y)
-        }
-        
-        static func adding(_ a: WirePoint, _ b: WirePoint) -> WirePoint {
-            return WirePoint(x: a.x + b.x, y: a.y + b.y)
-        }
-        
-        static var origin: WirePoint {
-            return WirePoint(x: 0, y: 0)
-        }
-    }
-    
     struct WirePath {
-        private var dictionary = [WirePoint: Int]()
-        private var points = Set<WirePoint>()
+        private var dictionary = [IntPoint: Int]()
+        private var points = Set<IntPoint>()
         
         var numStepsSoFar = 0
-        private mutating func addPoint(_ point: WirePoint) {
+        private mutating func addPoint(_ point: IntPoint) {
             numStepsSoFar += 1
             if self.points.insert(point).inserted {
                 self.dictionary[point] = numStepsSoFar
@@ -40,32 +23,32 @@ class Day03VC: AoCVC, AdventDay {
         
         init(string: String) {
             let components = string.components(separatedBy: ",")
-            var currPoint = WirePoint(x: 0, y: 0)
+            var currPoint = IntPoint(x: 0, y: 0)
             for component in components {
                 let direction = component.first!
                 let numSteps = Int(component.dropFirst())!
                 
-                var directionalPoint: WirePoint!
+                var directionalPoint: IntPoint!
                 switch direction {
-                case "U": directionalPoint = WirePoint(x: 0, y: 1)
-                case "D": directionalPoint = WirePoint(x: 0, y: -1)
-                case "L": directionalPoint = WirePoint(x: -1, y: 0)
-                case "R": directionalPoint = WirePoint(x: 1, y: 0)
+                case "U": directionalPoint = IntPoint(x: 0, y: 1)
+                case "D": directionalPoint = IntPoint(x: 0, y: -1)
+                case "L": directionalPoint = IntPoint(x: -1, y: 0)
+                case "R": directionalPoint = IntPoint(x: 1, y: 0)
                 default: fatalError()
                 }
                 
                 for _ in 0..<numSteps {
-                    currPoint = WirePoint.adding(currPoint, directionalPoint)
+                    currPoint = IntPoint.adding(currPoint, directionalPoint)
                     self.addPoint(currPoint)
                 }
             }
         }
         
-        func intersections(with otherPath: WirePath) -> Set<WirePoint> {
+        func intersections(with otherPath: WirePath) -> Set<IntPoint> {
             return self.points.intersection(otherPath.points)
         }
         
-        func stepsToIntersection(point: WirePoint) -> Int {
+        func stepsToIntersection(point: IntPoint) -> Int {
             return self.dictionary[point]!
         }
     }

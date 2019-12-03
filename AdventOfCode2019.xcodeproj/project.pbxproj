@@ -30,6 +30,7 @@
 		0470DA7D2394D6FC00DDAFCB /* Day02Input in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA7C2394D6FC00DDAFCB /* Day02Input */; };
 		04CDAB0323962299006CB388 /* Day03VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAB0223962299006CB388 /* Day03VC.swift */; };
 		04CDAB05239622BF006CB388 /* Day03Input in Resources */ = {isa = PBXBuildFile; fileRef = 04CDAB04239622BF006CB388 /* Day03Input */; };
+		04CDAB072396DE9E006CB388 /* IntPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAB062396DE9E006CB388 /* IntPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		0470DA7C2394D6FC00DDAFCB /* Day02Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day02Input; sourceTree = "<group>"; };
 		04CDAB0223962299006CB388 /* Day03VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03VC.swift; sourceTree = "<group>"; };
 		04CDAB04239622BF006CB388 /* Day03Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day03Input; sourceTree = "<group>"; };
+		04CDAB062396DE9E006CB388 /* IntPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				0470DA5A2392E48A00DDAFCB /* FileLoader.swift */,
 				0470DA602393D3EF00DDAFCB /* AoCVC.swift */,
 				0470DA622393DD1C00DDAFCB /* Math.swift */,
+				04CDAB062396DE9E006CB388 /* IntPoint.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				0470DA712394495300DDAFCB /* Day02VC_2018.swift in Sources */,
 				0470DA432392DC6400DDAFCB /* Overview2019ViewController.swift in Sources */,
 				0470DA572392E0CB00DDAFCB /* Day01VC.swift in Sources */,
+				04CDAB072396DE9E006CB388 /* IntPoint.swift in Sources */,
 				0470DA3F2392DC6400DDAFCB /* AppDelegate.swift in Sources */,
 				0470DA412392DC6400DDAFCB /* SceneDelegate.swift in Sources */,
 				0470DA6B23943D0700DDAFCB /* Day01VC_2018.swift in Sources */,

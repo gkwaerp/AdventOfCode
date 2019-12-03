@@ -10,12 +10,8 @@ import UIKit
 
 class Day03VC_2018: AoCVC, AdventDay {
     private struct Claim: Hashable {
-        struct Position: Hashable {
-            let x: Int
-            let y: Int
-        }
         let id: Int
-        let position: Position
+        let position: IntPoint
         let w: Int
         let h: Int
 
@@ -24,18 +20,18 @@ class Day03VC_2018: AoCVC, AdventDay {
             self.id = Int(split[0].replacingOccurrences(of: "#", with: ""))!
             
             let xy = split[2].replacingOccurrences(of: ":", with: "").split(separator: ",")
-            self.position = Position(x: Int(xy[0])!, y: Int(xy[1])!)
+            self.position = IntPoint(x: Int(xy[0])!, y: Int(xy[1])!)
 
             let wh = split[3].split(separator: "x")
             self.w = Int(wh[0])!
             self.h = Int(wh[1])!
         }
 
-        var positions: Set<Position> {
-            var allPositions = Set<Position>()
+        var positions: Set<IntPoint> {
+            var allPositions = Set<IntPoint>()
             for height in 0..<self.h {
                 for width in 0..<self.w {
-                    allPositions.insert(Position(x: self.position.x + width, y: self.position.y + height))
+                    allPositions.insert(IntPoint(x: self.position.x + width, y: self.position.y + height))
                 }
             }
             return allPositions
@@ -49,8 +45,8 @@ class Day03VC_2018: AoCVC, AdventDay {
     }
 
     func solveFirst() {
-        var set = Set<Claim.Position>()
-        var duplicated = Set<Claim.Position>()
+        var set = Set<IntPoint>()
+        var duplicated = Set<IntPoint>()
         for claim in self.claims {
             for position in claim.positions {
                 if !set.insert(position).inserted {
@@ -63,7 +59,7 @@ class Day03VC_2018: AoCVC, AdventDay {
     }
 
     func solveSecond() {
-        var dictionary = [Claim.Position: Claim]()
+        var dictionary = [IntPoint: Claim]()
         var nonOverlappingClaims = Set(self.claims)
         for claim in self.claims {
             for position in claim.positions {
