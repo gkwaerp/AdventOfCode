@@ -28,6 +28,8 @@
 		0470DA762394516F00DDAFCB /* Day03VC_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA752394516F00DDAFCB /* Day03VC_2018.swift */; };
 		0470DA78239455A800DDAFCB /* Day03Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA77239455A800DDAFCB /* Day03Input_2018 */; };
 		0470DA7D2394D6FC00DDAFCB /* Day02Input in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA7C2394D6FC00DDAFCB /* Day02Input */; };
+		04CDAB0323962299006CB388 /* Day03VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAB0223962299006CB388 /* Day03VC.swift */; };
+		04CDAB05239622BF006CB388 /* Day03Input in Resources */ = {isa = PBXBuildFile; fileRef = 04CDAB04239622BF006CB388 /* Day03Input */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		0470DA752394516F00DDAFCB /* Day03VC_2018.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03VC_2018.swift; sourceTree = "<group>"; };
 		0470DA77239455A800DDAFCB /* Day03Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day03Input_2018; sourceTree = "<group>"; };
 		0470DA7C2394D6FC00DDAFCB /* Day02Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day02Input; sourceTree = "<group>"; };
+		04CDAB0223962299006CB388 /* Day03VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03VC.swift; sourceTree = "<group>"; };
+		04CDAB04239622BF006CB388 /* Day03Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day03Input; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 				0470DA6723943C9F00DDAFCB /* 2018 */,
 				0470DA552392E0BC00DDAFCB /* Day01 */,
 				0470DA642393E2FD00DDAFCB /* Day02 */,
+				04CDAB0123962285006CB388 /* Day03 */,
 				0470DA522392DD0000DDAFCB /* Helpers */,
 				0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */,
 				0470DA402392DC6400DDAFCB /* SceneDelegate.swift */,
@@ -168,6 +173,15 @@
 			path = Day03;
 			sourceTree = "<group>";
 		};
+		04CDAB0123962285006CB388 /* Day03 */ = {
+			isa = PBXGroup;
+			children = (
+				04CDAB0223962299006CB388 /* Day03VC.swift */,
+				04CDAB04239622BF006CB388 /* Day03Input */,
+			);
+			path = Day03;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -228,6 +242,7 @@
 			files = (
 				0470DA4B2392DC6500DDAFCB /* LaunchScreen.storyboard in Resources */,
 				0470DA482392DC6500DDAFCB /* Assets.xcassets in Resources */,
+				04CDAB05239622BF006CB388 /* Day03Input in Resources */,
 				0470DA7D2394D6FC00DDAFCB /* Day02Input in Resources */,
 				0470DA462392DC6400DDAFCB /* Main.storyboard in Resources */,
 				0470DA6D2394461800DDAFCB /* Day1Input_2018 in Resources */,
@@ -254,6 +269,7 @@
 				0470DA3F2392DC6400DDAFCB /* AppDelegate.swift in Sources */,
 				0470DA412392DC6400DDAFCB /* SceneDelegate.swift in Sources */,
 				0470DA6B23943D0700DDAFCB /* Day01VC_2018.swift in Sources */,
+				04CDAB0323962299006CB388 /* Day03VC.swift in Sources */,
 				0470DA612393D3EF00DDAFCB /* AoCVC.swift in Sources */,
 				0470DA762394516F00DDAFCB /* Day03VC_2018.swift in Sources */,
 				0470DA632393DD1C00DDAFCB /* Math.swift in Sources */,

@@ -45,7 +45,7 @@ class Day03VC_2018: AoCVC, AdventDay {
     private var claims = Set<Claim>()
 
     func loadInput() {
-        self.claims = Set(FileLoader.loadText(fileName: "Day03Input_2018").filter({!$0.isEmpty}).map({Claim(string: $0)}))
+        self.claims = Set(FileLoader.loadText(fileName: "Day03Input_2018").map({Claim(string: $0)}))
     }
 
     func solveFirst() {

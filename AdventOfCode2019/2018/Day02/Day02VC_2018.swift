@@ -46,7 +46,6 @@ class Day02VC_2018: AoCVC, AdventDay {
         for charPositionIndex in 0..<(self.boxIds.first?.count ?? 0) {
             alreadySeen.append(Set<String>())
             for id in self.boxIds {
-                guard !id.isEmpty else { continue }
                 var filteredId = id
                 filteredId.remove(at: String.Index(utf16Offset: charPositionIndex, in: id))
                 if alreadySeen[charPositionIndex].contains(filteredId) {

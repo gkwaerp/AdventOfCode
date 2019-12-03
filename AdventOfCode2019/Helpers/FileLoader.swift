@@ -24,6 +24,6 @@ class FileLoader {
     }
 
     static func loadText(fileName: String, fileType: String? = nil) -> [String] {
-        return try! String(contentsOf: getURL(for: fileName, fileType: fileType), encoding: .utf8).components(separatedBy: "\n")
+        return try! String(contentsOf: getURL(for: fileName, fileType: fileType), encoding: .utf8).components(separatedBy: "\n").filter({!$0.isEmpty})
     }
 }
