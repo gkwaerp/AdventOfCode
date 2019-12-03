@@ -13,6 +13,8 @@ class Overview2019ViewController: UIViewController {
     private var subStackViews = [UIStackView]()
 
     private let enabledDays = Set([1, 2, 3])
+    private let verticalSpacing: CGFloat = 4
+    private let horizontalSpacing: CGFloat = 16
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,31 +30,45 @@ class Overview2019ViewController: UIViewController {
         self.mainStackView.distribution = .fillEqually
         self.mainStackView.alignment = .center
         self.mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.mainStackView.spacing = self.horizontalSpacing
         self.view.addSubview(self.mainStackView)
         
-        self.mainStackView.constrainToSuperView()
+        NSLayoutConstraint.activate([self.mainStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                                     self.mainStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)])
         
         for _ in 0..<4 {
             let subStackView = UIStackView()
             subStackView.axis = .vertical
             subStackView.distribution = .fillEqually
             subStackView.alignment = .center
+            subStackView.spacing = self.verticalSpacing
             self.mainStackView.addArrangedSubview(subStackView)
             self.subStackViews.append(subStackView)
         }
+    }
+
+    private func makeAdventDayButton(day: Int) -> UIButton {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let dayString = String(format: "%02d", day)
+        button.setTitle("Day \(dayString)", for: .normal)
+        button.tag = day
+        button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+        button.isEnabled = self.enabledDays.contains(day)
+        return button
     }
     
     private func configureButtons() {
         for i in 0..<24 {
             let day = i + 1
-            let button = UIButton(type: .system)
-            button.setTitle("Day \(day)", for: .normal)
-            button.tag = day
-            button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
-            button.isEnabled = self.enabledDays.contains(day)
             let stackViewIndex = i % 4
-            self.subStackViews[stackViewIndex].addArrangedSubview(button)
+            self.subStackViews[stackViewIndex].addArrangedSubview(self.makeAdventDayButton(day: day))
         }
+        
+        let sillyButton = self.makeAdventDayButton(day: 25)
+        self.view.addSubview(sillyButton)
+        NSLayoutConstraint.activate([sillyButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                                     sillyButton.topAnchor.constraint(equalTo: self.mainStackView.bottomAnchor, constant: self.verticalSpacing)])
 
         let button = UIButton(type: .system)
         button.setTitle("2018", for: .normal)
