@@ -53,7 +53,7 @@ class IntMachine {
         }
     }
 
-    private func incrementInstructionPointer(from opcode: Opcode) {
+    private func updateInstructionPointer(from opcode: Opcode) {
         switch opcode {
         case .addition: self.instructionPointer += 4
         case .multiplication: self.instructionPointer += 4
@@ -66,7 +66,7 @@ class IntMachine {
         while !finished {
             let opcode = Opcode.from(ints: self.workingMemory, at: self.instructionPointer)
             finished = self.execute(opcode: opcode)
-            self.incrementInstructionPointer(from: opcode)
+            self.updateInstructionPointer(from: opcode)
         }
         return self.workingMemory[0]
     }
