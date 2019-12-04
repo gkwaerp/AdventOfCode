@@ -9,26 +9,26 @@
 import UIKit
 
 class Day04VC_2018: AoCVC, AdventDay {
-    enum GuardEventType {
+    private enum GuardEventType {
         case shiftBegins(guardId: Int)
         case fallsAsleep
         case wakesUp
     }
 
-    struct GuardDate: Hashable {
+    private struct GuardDate: Hashable {
         let yearMonthDay: String
         let minute: Int
     }
 
-    struct GuardEvent {
+    private struct GuardEvent {
         let eventType: GuardEventType
         let date: GuardDate
     }
 
-    class GuardLog {
+    private class GuardLog {
         var id: Int
         var events = [GuardEvent]()
-        var dictionary = [String: Set<Int>]() //yearMonthDay : sleepMinute
+        private var dictionary = [String: Set<Int>]() //yearMonthDay : sleepMinute
 
         init(id: Int) {
             self.id = id
@@ -79,11 +79,11 @@ class Day04VC_2018: AoCVC, AdventDay {
         
     }
 
-    class SpyLog {
-        var guardEvents = [GuardEvent]()
+    private class SpyLog {
+        private var guardEvents = [GuardEvent]()
         private var currentGuardIdOnShift: Int! = nil
         private var currentGuardIdSleeping: Int! = nil
-        var dictionary = [Int: GuardLog]()
+        private var dictionary = [Int: GuardLog]()
 
         func populate(from strings: [String]) {
             for string in strings {
@@ -184,7 +184,7 @@ class Day04VC_2018: AoCVC, AdventDay {
         }
     }
 
-    var spyLog = SpyLog()
+    private var spyLog = SpyLog()
     
     func loadInput() {
         self.spyLog.populate(from: FileLoader.loadText(fileName: "Day04Input_2018"))
