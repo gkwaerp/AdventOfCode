@@ -51,7 +51,7 @@ class AoCVC: UIViewController {
         if let adventDay = self as? AdventDay {
             let loadTime = Date()
             adventDay.loadInput()
-            print("\(self.title!) loaded in \(self.getElapsedTimeString(from: loadTime))")
+            print("\(self.title!) input loaded in \(self.getElapsedTimeString(from: loadTime))")
             self.startTime = Date()
             adventDay.solveFirst()
             adventDay.solveSecond()
