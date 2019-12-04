@@ -35,7 +35,6 @@
 		04CDAB0C2396FA45006CB388 /* Day04VC_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAB0B2396FA45006CB388 /* Day04VC_2018.swift */; };
 		04CDAB0E2396FA55006CB388 /* Day04Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 04CDAB0D2396FA55006CB388 /* Day04Input_2018 */; };
 		04CDAB11239712C9006CB388 /* Day04VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAB10239712C9006CB388 /* Day04VC.swift */; };
-		04CDAB13239712D4006CB388 /* Day04_Input in Resources */ = {isa = PBXBuildFile; fileRef = 04CDAB12239712D4006CB388 /* Day04_Input */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +68,6 @@
 		04CDAB0B2396FA45006CB388 /* Day04VC_2018.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day04VC_2018.swift; sourceTree = "<group>"; };
 		04CDAB0D2396FA55006CB388 /* Day04Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day04Input_2018; sourceTree = "<group>"; };
 		04CDAB10239712C9006CB388 /* Day04VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day04VC.swift; sourceTree = "<group>"; };
-		04CDAB12239712D4006CB388 /* Day04_Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day04_Input; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				04CDAB10239712C9006CB388 /* Day04VC.swift */,
-				04CDAB12239712D4006CB388 /* Day04_Input */,
 			);
 			path = Day04;
 			sourceTree = "<group>";
@@ -277,7 +274,6 @@
 				0470DA4B2392DC6500DDAFCB /* LaunchScreen.storyboard in Resources */,
 				04CDAB0E2396FA55006CB388 /* Day04Input_2018 in Resources */,
 				0470DA482392DC6500DDAFCB /* Assets.xcassets in Resources */,
-				04CDAB13239712D4006CB388 /* Day04_Input in Resources */,
 				04CDAB05239622BF006CB388 /* Day03Input in Resources */,
 				0470DA7D2394D6FC00DDAFCB /* Day02Input in Resources */,
 				0470DA462392DC6400DDAFCB /* Main.storyboard in Resources */,
