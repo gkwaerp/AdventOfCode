@@ -54,20 +54,20 @@ class Day03VC: AoCVC, AdventDay {
     }
     
     private var wirePaths = [WirePath]()
+    private var intersections = Set<IntPoint>()
     
     func loadInput() {
         self.wirePaths = FileLoader.loadText(fileName: "Day03Input").map({WirePath(string: $0)})
+        self.intersections = self.wirePaths[0].intersections(with: self.wirePaths[1])
     }
     
     func solveFirst() {
-        let intersections = self.wirePaths[0].intersections(with: self.wirePaths[1])
-        let closest = intersections.map({$0.manhattanDistance(to: .origin)}).sorted().first!
+        let closest = self.intersections.map({$0.manhattanDistance(to: .origin)}).sorted().first!
         self.setSolution1("\(closest)")
     }
     
     func solveSecond() {
-        let intersections = self.wirePaths[0].intersections(with: self.wirePaths[1])
-        let totalSteps = intersections.map { (intersection) in
+        let totalSteps = self.intersections.map { (intersection) in
             self.wirePaths.map({$0.stepsToIntersection(point: intersection)}).reduce(0, +)
         }.sorted().first!
         self.setSolution2("\(totalSteps)")
