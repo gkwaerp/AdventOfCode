@@ -9,11 +9,11 @@
 import UIKit
 
 class Day03VC: AoCVC, AdventDay {
-    struct WirePath {
+    private struct WirePath {
         private var dictionary = [IntPoint: Int]()
         private var points = Set<IntPoint>()
         
-        var numStepsSoFar = 0
+        private var numStepsSoFar = 0
         private mutating func addPoint(_ point: IntPoint) {
             numStepsSoFar += 1
             if self.points.insert(point).inserted {

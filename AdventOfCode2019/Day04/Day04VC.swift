@@ -9,8 +9,7 @@
 import UIKit
 
 class Day04VC: AoCVC, AdventDay {
-
-    struct Validator {
+    private struct Validator {
         var potentials = [Int]()
         
         private func matchesCriteria(number: Int, strict: Bool) -> Bool {
@@ -54,7 +53,7 @@ class Day04VC: AoCVC, AdventDay {
         }
     }
 
-    var validator = Validator()
+    private var validator = Validator()
     
     func loadInput() {
         let inputRange = 264360...746325
