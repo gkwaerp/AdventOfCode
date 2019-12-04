@@ -49,15 +49,6 @@ class Day04VC: AoCVC, AdventDay {
             return false
         }
 
-        func test() {
-            guard self.matchesCriteria(number: 111111, strict: false) == true else { fatalError() }
-            guard self.matchesCriteria(number: 223450, strict: false) == false else { fatalError() }
-            guard self.matchesCriteria(number: 123789, strict: false) == false else { fatalError() }
-            guard self.matchesCriteria(number: 112233, strict: true) == true else { fatalError() }
-            guard self.matchesCriteria(number: 123444, strict: true) == false else { fatalError() }
-            guard self.matchesCriteria(number: 111122, strict: true) == true else { fatalError() }
-        }
-
         func numMatching(strict: Bool) -> Int {
             self.potentials.map({self.matchesCriteria(number: $0, strict: strict)}).filter({$0 == true}).count
         }
@@ -68,7 +59,6 @@ class Day04VC: AoCVC, AdventDay {
     func loadInput() {
         let inputRange = 264360...746325
         self.validator.potentials = Array(inputRange)
-        self.validator.test()
     }
     
     func solveFirst() {
