@@ -29,9 +29,7 @@ class Day04VC: AoCVC, AdventDay {
                 if arrayedNumber[i] < currentMin {
                     return false
                 }
-                if arrayedNumber[i] > currentMin {
-                    currentMin = arrayedNumber[i]
-                }
+                currentMin = arrayedNumber[i]
             }
             return true
         }
