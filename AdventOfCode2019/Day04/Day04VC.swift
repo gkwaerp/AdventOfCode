@@ -42,15 +42,10 @@ class Day04VC: AoCVC, AdventDay {
                 counts[number] += 1
             }
             
+            let predicate: (Int, Int) -> Bool = strict ? (==) : (>=)
             for count in counts {
-                if strict {
-                    if count == 2 {
-                        return true
-                    }
-                } else {
-                    if count >= 2 {
-                        return true
-                    }
+                if predicate(count, 2) {
+                    return true
                 }
             }
             return false
