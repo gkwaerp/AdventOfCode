@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		04666DC9239858C7002B408C /* Day05Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 04666DC8239858C7002B408C /* Day05Input_2018 */; };
+		04666DCC2398C430002B408C /* Day05VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04666DCB2398C430002B408C /* Day05VC.swift */; };
+		04666DCE2398C483002B408C /* Day05Input in Resources */ = {isa = PBXBuildFile; fileRef = 04666DCD2398C483002B408C /* Day05Input */; };
 		0470DA3F2392DC6400DDAFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */; };
 		0470DA412392DC6400DDAFCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA402392DC6400DDAFCB /* SceneDelegate.swift */; };
 		0470DA432392DC6400DDAFCB /* Overview2019ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA422392DC6400DDAFCB /* Overview2019ViewController.swift */; };
@@ -42,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		04666DC8239858C7002B408C /* Day05Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day05Input_2018; sourceTree = "<group>"; };
+		04666DCB2398C430002B408C /* Day05VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day05VC.swift; sourceTree = "<group>"; };
+		04666DCD2398C483002B408C /* Day05Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day05Input; sourceTree = "<group>"; };
 		0470DA3B2392DC6400DDAFCB /* AdventOfCode2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventOfCode2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0470DA402392DC6400DDAFCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04666DCA2398C41E002B408C /* Day05 */ = {
+			isa = PBXGroup;
+			children = (
+				04666DCB2398C430002B408C /* Day05VC.swift */,
+				04666DCD2398C483002B408C /* Day05Input */,
+			);
+			path = Day05;
+			sourceTree = "<group>";
+		};
 		0470DA322392DC6400DDAFCB = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +124,7 @@
 				0470DA642393E2FD00DDAFCB /* Day02 */,
 				04CDAB0123962285006CB388 /* Day03 */,
 				04CDAB0F239712B5006CB388 /* Day04 */,
+				04666DCA2398C41E002B408C /* Day05 */,
 				0470DA522392DD0000DDAFCB /* Helpers */,
 				0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */,
 				0470DA402392DC6400DDAFCB /* SceneDelegate.swift */,
@@ -289,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0470DA4B2392DC6500DDAFCB /* LaunchScreen.storyboard in Resources */,
+				04666DCE2398C483002B408C /* Day05Input in Resources */,
 				04CDAB0E2396FA55006CB388 /* Day04Input_2018 in Resources */,
 				04666DC9239858C7002B408C /* Day05Input_2018 in Resources */,
 				0470DA482392DC6500DDAFCB /* Assets.xcassets in Resources */,
@@ -324,6 +339,7 @@
 				04CDAB18239853E3006CB388 /* Day05VC_2018.swift in Sources */,
 				04CDAB092396DF5E006CB388 /* IntMachine.swift in Sources */,
 				04CDAB152398538B006CB388 /* String+Ext.swift in Sources */,
+				04666DCC2398C430002B408C /* Day05VC.swift in Sources */,
 				04CDAB0323962299006CB388 /* Day03VC.swift in Sources */,
 				0470DA612393D3EF00DDAFCB /* AoCVC.swift in Sources */,
 				0470DA762394516F00DDAFCB /* Day03VC_2018.swift in Sources */,
