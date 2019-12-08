@@ -9,35 +9,35 @@
 import UIKit
 
 class Day06VC: AoCVC, AdventDay {
-    class Node: Hashable, Equatable {
-        static func == (lhs: Day06VC.Node, rhs: Day06VC.Node) -> Bool {
-            return lhs.id == rhs.id
-        }
-
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(self.id)
-        }
-        
+    class StarNode: Node, Equatable, Hashable {
         let id: String
         let orbitsId: String?
         var children = [Node]()
-        weak var parent: Node?
-
+        var parent: Node? = nil
+        
         init(id: String, orbitsID: String?) {
             self.id = id
             self.orbitsId = orbitsID
         }
-
-        static func from(string: String) -> Node {
+        
+        static func from(string: String) -> StarNode {
             let split = string.split(separator: ")")
             let orbitsID = String(split[0])
             let id = String(split[1])
-            return Node(id: id, orbitsID: orbitsID)
+            return StarNode(id: id, orbitsID: orbitsID)
+        }
+        
+        static func == (lhs: StarNode, rhs: StarNode) -> Bool {
+            return lhs.id == rhs.id
+        }
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(self.id)
         }
     }
-
+    
     struct StarMap {
-        func populate(from orbits: [Node]) {
+        func populate(from orbits: [StarNode]) {
             for orbit in orbits {
                 if let orbitingAroundNode = orbits.first(where: {$0.id == orbit.orbitsId}) {
                     orbit.parent = orbitingAroundNode
@@ -45,48 +45,32 @@ class Day06VC: AoCVC, AdventDay {
                 }
             }
         }
-
-        func calcChecksum(orbits: [Node]) -> Int {
+        
+        func calcChecksum(orbits: [StarNode]) -> Int {
             var count = 0
             for orbit in orbits {
-                var currentNode = orbit
-                while let parent = currentNode.parent {
-                    count += 1
-                    currentNode = parent
-                }
+                count += orbit.allParents.count
             }
             return count
         }
-
-        func calcMinimum(nodes: [Node]) -> Int {
+        
+        func calcMinimum(nodes: [StarNode]) -> Int {
             let you = nodes.first(where: {$0.id == "YOU"})!
             let santa = nodes.first(where: {$0.id == "SAN"})!
-
-            var youParents = Set<Node>()
-            var currentNode = you
-            while let parent = currentNode.parent {
-                youParents.insert(parent)
-                currentNode = parent
-            }
             
-            var santaParents = Set<Node>()
-            currentNode = santa
-            while let parent = currentNode.parent {
-                santaParents.insert(parent)
-                currentNode = parent
-            }
-
+            let youParents = Set<StarNode>(you.allParents as! [StarNode])
+            let santaParents = Set<StarNode>(santa.allParents as! [StarNode])
             return youParents.symmetricDifference(santaParents).count
         }
     }
-    private var orbits = [Node]()
+
+    private var orbits = [StarNode]()
     private var starMap = StarMap()
     func loadInput() {
         let lines = FileLoader.loadText(fileName: "Day06Input")
-        self.orbits = lines.map({Node.from(string: $0)})
-        self.orbits.append(Node(id: "COM", orbitsID: nil))
+        self.orbits = lines.map({StarNode.from(string: $0)})
+        self.orbits.append(StarNode(id: "COM", orbitsID: nil))
         self.starMap.populate(from: self.orbits)
-        
     }
     
     func solveFirst() {
