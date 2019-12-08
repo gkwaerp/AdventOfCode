@@ -75,9 +75,10 @@ class Day07VC: AoCVC, AdventDay {
     
     func solveSecond() {
         var allInputs = [[Int]]()
-        let allPhaseSettings = self.generatePhaseSettings(settings: [5, 6, 7, 8, 9])
+        
         var bestOutputSignal = 0
         
+        let allPhaseSettings = self.generatePhaseSettings(settings: [5, 6, 7, 8, 9])
         for phaseSetting in allPhaseSettings {
             allInputs = [[phaseSetting[0], 0],
                          [phaseSetting[1]],
@@ -100,7 +101,7 @@ class Day07VC: AoCVC, AdventDay {
                     let nextId = (machineId + 1) % self.machines.count
                     let programStatus = machine.run { (outputValue) in
                         print("Output from \(machineId): \(outputValue)")
-                        machines[nextId].inputs.append(outputValue)
+                        self.machines[nextId].inputs.append(outputValue)
 
                         if machineId == self.machines.count - 1 {
                             bestThisIteration = max(bestThisIteration, outputValue)

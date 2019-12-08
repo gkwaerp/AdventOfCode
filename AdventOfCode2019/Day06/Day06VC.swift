@@ -9,7 +9,15 @@
 import UIKit
 
 class Day06VC: AoCVC, AdventDay {
-    class Node {
+    class Node: Hashable, Equatable {
+        static func == (lhs: Day06VC.Node, rhs: Day06VC.Node) -> Bool {
+            return lhs.id == rhs.id
+        }
+
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(self.id)
+        }
+        
         let id: String
         let orbitsId: String?
         var children = [Node]()
@@ -54,52 +62,21 @@ class Day06VC: AoCVC, AdventDay {
             let you = nodes.first(where: {$0.id == "YOU"})!
             let santa = nodes.first(where: {$0.id == "SAN"})!
 
-            var youParents = [Node]()
+            var youParents = Set<Node>()
             var currentNode = you
             while let parent = currentNode.parent {
-                youParents.append(parent)
+                youParents.insert(parent)
                 currentNode = parent
-                
             }
             
-            var santaParents = [Node]()
+            var santaParents = Set<Node>()
             currentNode = santa
             while let parent = currentNode.parent {
-                santaParents.append(parent)
+                santaParents.insert(parent)
                 currentNode = parent
-                
-            }
-            
-            var commonParent: Node!
-            var countToParent = 0
-            if youParents.count < santaParents.count {
-                for i in 0..<santaParents.count {
-                    if youParents.first(where: {$0.id == santaParents[i].id}) != nil {
-                        commonParent = santaParents[i]
-                        countToParent = i
-                        break
-                    }
-                }
-            } else {
-                for i in 0..<youParents.count {
-                    if santaParents.first(where: {$0.id == youParents[i].id}) != nil {
-                        commonParent = youParents[i]
-                        countToParent = i
-                        break
-                    }
-                }
-                
             }
 
-            for santaParent in santaParents {
-                if santaParent.id == commonParent.id {
-                    return countToParent
-                }
-                countToParent += 1
-                
-            }
-            
-            return -1
+            return youParents.symmetricDifference(santaParents).count
         }
     }
     private var orbits = [Node]()

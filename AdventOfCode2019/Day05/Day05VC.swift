@@ -27,12 +27,12 @@ class Day05VC: AoCVC, AdventDay {
     }
 
     func solveSecond() {
-        self.machine.reset(noun: nil, verb: nil)
+        self.machine.reset()
         self.machine.inputs = [5]
         var outputs = [Int]()
         self.machine.run(outputHandler: { (outputValue) in
             outputs.append(outputValue)
         })
-        self.setSolution2("\(outputs[0])")
+        self.setSolution2("\(outputs.first!)")
     }
 }

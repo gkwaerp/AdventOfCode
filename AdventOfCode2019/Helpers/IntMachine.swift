@@ -165,7 +165,7 @@ class IntMachine {
     }
     
     @discardableResult
-    func run(outputHandler: ((Int) -> Void)) -> ProgramStatus {
+    func run(outputHandler: IntBlock?) -> ProgramStatus {
         var programStatus: ProgramStatus = .running
         while (true) {
             let instruction = Instruction.from(memory: self.workingMemory, at: instructionPointer)
@@ -187,7 +187,7 @@ class IntMachine {
         return input
     }
 
-    private func execute(instruction: Instruction, outputHandler: IntBlock) -> ProgramStatus {
+    private func execute(instruction: Instruction, outputHandler: IntBlock?) -> ProgramStatus {
         switch instruction {
         case .addition(let paramA, let paramB, let storeIn):
             self.workingMemory[storeIn] = paramA.value(for: self.workingMemory) + paramB.value(for: self.workingMemory)
@@ -200,7 +200,7 @@ class IntMachine {
                 return .waitingForInput
             }
         case .output(let param):
-            outputHandler(param.value(for: self.workingMemory))
+            outputHandler?(param.value(for: self.workingMemory))
         case .jumpIfTrue(let instructionPointerValue):
             if let instructionPointerValue = instructionPointerValue {
                 self.instructionPointer = instructionPointerValue.value(for: self.workingMemory)
