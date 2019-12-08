@@ -47,11 +47,7 @@ class Day06VC: AoCVC, AdventDay {
         }
         
         func calcChecksum(orbits: [StarNode]) -> Int {
-            var count = 0
-            for orbit in orbits {
-                count += orbit.allParents.count
-            }
-            return count
+            return orbits.map({$0.allParents.count}).reduce(0, +)
         }
         
         func calcMinimum(nodes: [StarNode]) -> Int {
