@@ -62,14 +62,14 @@ class Day03VC: AoCVC, AdventDay {
     }
     
     func solveFirst() {
-        let closest = self.intersections.map({$0.manhattanDistance(to: .origin)}).sorted().first!
+        let closest = self.intersections.map({$0.manhattanDistance(to: .origin)}).min()!
         self.setSolution1("\(closest)")
     }
     
     func solveSecond() {
         let totalSteps = self.intersections.map { (intersection) in
             self.wirePaths.map({$0.stepsToIntersection(point: intersection)}).reduce(0, +)
-        }.sorted().first!
+        }.min()!
         self.setSolution2("\(totalSteps)")
     }
 }
