@@ -13,30 +13,18 @@ class Day08VC: AoCVC, AdventDay {
         struct Layer {
             var width: Int
             var height: Int
-            var data: [[Int]]
+            var data: [Int]
 
-            func getPixel(x: Int, y: Int) -> Int {
-                return self.data[y][x]
+            private func getIndex(x: Int, y: Int) -> Int {
+                return y * width + x
             }
 
-            static func from(width: Int, height: Int, data: [Int]) -> Layer {
-                var imageData = [[Int]]()
-                for y in 0..<height {
-                    imageData.append([])
-                    for x in 0..<width {
-                        let pixelIndex = y * width + x
-                        imageData[y].append(data[pixelIndex])
-                    }
-                }
-                return Layer(width: width, height: height, data: imageData)
+            func getPixel(x: Int, y: Int) -> Int {
+                return self.data[self.getIndex(x: x, y: y)]
             }
 
             func getNumPixels(matching pixelValue: Int) -> Int {
-                var matchingPixels = 0
-                for column in self.data {
-                    matchingPixels += column.filter({$0 == pixelValue}).count
-                }
-                return matchingPixels
+                return self.data.filter({$0 == pixelValue}).count
             }
 
             func asText() -> String {
@@ -60,7 +48,7 @@ class Day08VC: AoCVC, AdventDay {
         var height: Int
         var layers: [Layer]
 
-        static func from(width: Int, height: Int, data: [Int]) -> SpaceImage {
+        init(width: Int, height: Int, data: [Int]) {
             let pixelsPerLayer = width * height
             let numLayers = data.count / pixelsPerLayer
             var dataToUse = data
@@ -68,10 +56,12 @@ class Day08VC: AoCVC, AdventDay {
             for _ in 0..<numLayers {
                 let layerData = Array(dataToUse.prefix(pixelsPerLayer))
                 dataToUse = Array(dataToUse.dropFirst(pixelsPerLayer))
-                layers.append(Layer.from(width: width, height: height, data: layerData))
+                layers.append(Layer(width: width, height: height, data: layerData))
             }
 
-            return SpaceImage(width: width, height: height, layers: layers)
+            self.width = width
+            self.height = height
+            self.layers = layers
         }
 
         func getLayerIndexWithFewestMatching(pixelValue: Int) -> Int {
@@ -92,11 +82,10 @@ class Day08VC: AoCVC, AdventDay {
         }
 
         lazy var rasterized: Layer = {
-            var rasterizedData = [[Int]]()
+            var rasterizedData = [Int]()
             for y in 0..<self.height {
-                rasterizedData.append([])
                 for x in 0..<self.width {
-                    rasterizedData[y].append(self.findPixel(x: x, y: y))
+                    rasterizedData.append(self.findPixel(x: x, y: y))
                 }
             }
             return Layer(width: self.width, height: self.height, data: rasterizedData)
@@ -118,7 +107,7 @@ class Day08VC: AoCVC, AdventDay {
     func loadInput() {
         let line = FileLoader.loadText(fileName: "Day08Input").first!
         let ints = line.map({ Int("\($0)")! })
-        self.spaceImage = SpaceImage.from(width: 25, height: 6, data: ints)
+        self.spaceImage = SpaceImage(width: 25, height: 6, data: ints)
     }
     
     func solveFirst() {
