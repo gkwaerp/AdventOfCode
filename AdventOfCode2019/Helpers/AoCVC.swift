@@ -23,9 +23,9 @@ class AoCVC: UIViewController {
 
     private var label: UILabel {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textAlignment = .center
-        label.numberOfLines = 2
+        label.font = UIFont.monospacedSystemFont(ofSize: 20, weight: .regular)
+        label.textAlignment = .left
+        label.numberOfLines = 0
         return label
     }
 
@@ -37,10 +37,10 @@ class AoCVC: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.alignment = .center
+        stackView.alignment = .leading
         stackView.distribution = .fillEqually
         self.view.addSubview(stackView)
-        stackView.constrainToSuperView(leading: 40, trailing: 40, top: 180, bottom: 180, useSafeArea: true)
+        stackView.constrainToSuperView(leading: 40, trailing: 40, top: 20, bottom: 20, useSafeArea: true)
 
         self.solution1Label = self.label
         self.solution2Label = self.label
@@ -60,19 +60,19 @@ class AoCVC: UIViewController {
 
     func setSolution1(_ text: String) {
         self.solution1Time = Date()
-        let fullText = "\(text) -- (\(self.getElapsedTimeString(from: self.startTime)))"
-        self.solution1Label.text = fullText
-        print("\(self.title!) Solution 1: \(fullText)")
+        let timeString = self.getElapsedTimeString(from: self.startTime)
+        self.solution1Label.text = "\(text)\n\n\(timeString)"
+        print("\(self.title!) Solution 1: \(text) -- \(timeString)")
     }
 
     func setSolution2(_ text: String) {
-        let fullText = "\(text) -- (\(self.getElapsedTimeString(from: self.solution1Time)))"
-        self.solution2Label.text = fullText
-        print("\(self.title!) Solution 2: \(fullText)")
+        let timeString = self.getElapsedTimeString(from: self.solution1Time)
+        self.solution2Label.text = "\(text)\n\n\(timeString)"
+        print("\(self.title!) Solution 2: \(text) -- \(timeString)")
     }
 
     private func getElapsedTimeString(from date: Date) -> String {
         let elapsedTime = Date().timeIntervalSince(date)
-        return String(format: "%.4f", elapsedTime)
+        return String(format: "Time = %.4f", elapsedTime)
     }
 }

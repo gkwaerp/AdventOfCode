@@ -12,7 +12,7 @@ class Overview2019ViewController: UIViewController {
     private let mainStackView = UIStackView()
     private var subStackViews = [UIStackView]()
 
-    private let enabledDays = Set([1, 2, 3, 4, 5, 6, 7])
+    private let enabledDays = Set([1, 2, 3, 4, 5, 6, 7, 8])
     private let verticalSpacing: CGFloat = 4
     private let horizontalSpacing: CGFloat = 16
     
@@ -96,6 +96,7 @@ class Overview2019ViewController: UIViewController {
         case 5: vc = Day05VC()
         case 6: vc = Day06VC()
         case 7: vc = Day07VC()
+        case 8: vc = Day08VC()
         default: break
         }
         
