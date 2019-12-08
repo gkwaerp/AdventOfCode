@@ -10,6 +10,8 @@
 		04666DC9239858C7002B408C /* Day05Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 04666DC8239858C7002B408C /* Day05Input_2018 */; };
 		04666DCC2398C430002B408C /* Day05VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04666DCB2398C430002B408C /* Day05VC.swift */; };
 		04666DCE2398C483002B408C /* Day05Input in Resources */ = {isa = PBXBuildFile; fileRef = 04666DCD2398C483002B408C /* Day05Input */; };
+		04666DD62399B4F3002B408C /* Day06VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04666DD52399B4F3002B408C /* Day06VC.swift */; };
+		04666DD82399B535002B408C /* Day06Input in Resources */ = {isa = PBXBuildFile; fileRef = 04666DD72399B535002B408C /* Day06Input */; };
 		0470DA3F2392DC6400DDAFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */; };
 		0470DA412392DC6400DDAFCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA402392DC6400DDAFCB /* SceneDelegate.swift */; };
 		0470DA432392DC6400DDAFCB /* Overview2019ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA422392DC6400DDAFCB /* Overview2019ViewController.swift */; };
@@ -31,6 +33,9 @@
 		0470DA762394516F00DDAFCB /* Day03VC_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA752394516F00DDAFCB /* Day03VC_2018.swift */; };
 		0470DA78239455A800DDAFCB /* Day03Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA77239455A800DDAFCB /* Day03Input_2018 */; };
 		0470DA7D2394D6FC00DDAFCB /* Day02Input in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA7C2394D6FC00DDAFCB /* Day02Input */; };
+		04B9332F239BFFD400B543A7 /* Day07VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9332E239BFFD400B543A7 /* Day07VC.swift */; };
+		04B93331239BFFE300B543A7 /* Day07Input in Resources */ = {isa = PBXBuildFile; fileRef = 04B93330239BFFE300B543A7 /* Day07Input */; };
+		04B93333239C859400B543A7 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B93332239C859400B543A7 /* Misc.swift */; };
 		04CDAB0323962299006CB388 /* Day03VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAB0223962299006CB388 /* Day03VC.swift */; };
 		04CDAB05239622BF006CB388 /* Day03Input in Resources */ = {isa = PBXBuildFile; fileRef = 04CDAB04239622BF006CB388 /* Day03Input */; };
 		04CDAB072396DE9E006CB388 /* IntPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAB062396DE9E006CB388 /* IntPoint.swift */; };
@@ -46,6 +51,8 @@
 		04666DC8239858C7002B408C /* Day05Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day05Input_2018; sourceTree = "<group>"; };
 		04666DCB2398C430002B408C /* Day05VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day05VC.swift; sourceTree = "<group>"; };
 		04666DCD2398C483002B408C /* Day05Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day05Input; sourceTree = "<group>"; };
+		04666DD52399B4F3002B408C /* Day06VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day06VC.swift; sourceTree = "<group>"; };
+		04666DD72399B535002B408C /* Day06Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day06Input; sourceTree = "<group>"; };
 		0470DA3B2392DC6400DDAFCB /* AdventOfCode2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventOfCode2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0470DA402392DC6400DDAFCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +76,9 @@
 		0470DA752394516F00DDAFCB /* Day03VC_2018.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03VC_2018.swift; sourceTree = "<group>"; };
 		0470DA77239455A800DDAFCB /* Day03Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day03Input_2018; sourceTree = "<group>"; };
 		0470DA7C2394D6FC00DDAFCB /* Day02Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day02Input; sourceTree = "<group>"; };
+		04B9332E239BFFD400B543A7 /* Day07VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day07VC.swift; sourceTree = "<group>"; };
+		04B93330239BFFE300B543A7 /* Day07Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day07Input; sourceTree = "<group>"; };
+		04B93332239C859400B543A7 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		04CDAB0223962299006CB388 /* Day03VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03VC.swift; sourceTree = "<group>"; };
 		04CDAB04239622BF006CB388 /* Day03Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day03Input; sourceTree = "<group>"; };
 		04CDAB062396DE9E006CB388 /* IntPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntPoint.swift; sourceTree = "<group>"; };
@@ -100,6 +110,15 @@
 			path = Day05;
 			sourceTree = "<group>";
 		};
+		04666DD42399B4DC002B408C /* Day06 */ = {
+			isa = PBXGroup;
+			children = (
+				04666DD52399B4F3002B408C /* Day06VC.swift */,
+				04666DD72399B535002B408C /* Day06Input */,
+			);
+			path = Day06;
+			sourceTree = "<group>";
+		};
 		0470DA322392DC6400DDAFCB = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +144,8 @@
 				04CDAB0123962285006CB388 /* Day03 */,
 				04CDAB0F239712B5006CB388 /* Day04 */,
 				04666DCA2398C41E002B408C /* Day05 */,
+				04666DD42399B4DC002B408C /* Day06 */,
+				04B9332D239BFFC600B543A7 /* Day07 */,
 				0470DA522392DD0000DDAFCB /* Helpers */,
 				0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */,
 				0470DA402392DC6400DDAFCB /* SceneDelegate.swift */,
@@ -147,6 +168,7 @@
 				04CDAB062396DE9E006CB388 /* IntPoint.swift */,
 				04CDAB082396DF5E006CB388 /* IntMachine.swift */,
 				04CDAB142398538B006CB388 /* String+Ext.swift */,
+				04B93332239C859400B543A7 /* Misc.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -207,6 +229,15 @@
 				0470DA77239455A800DDAFCB /* Day03Input_2018 */,
 			);
 			path = Day03;
+			sourceTree = "<group>";
+		};
+		04B9332D239BFFC600B543A7 /* Day07 */ = {
+			isa = PBXGroup;
+			children = (
+				04B9332E239BFFD400B543A7 /* Day07VC.swift */,
+				04B93330239BFFE300B543A7 /* Day07Input */,
+			);
+			path = Day07;
 			sourceTree = "<group>";
 		};
 		04CDAB0123962285006CB388 /* Day03 */ = {
@@ -305,6 +336,7 @@
 				0470DA4B2392DC6500DDAFCB /* LaunchScreen.storyboard in Resources */,
 				04666DCE2398C483002B408C /* Day05Input in Resources */,
 				04CDAB0E2396FA55006CB388 /* Day04Input_2018 in Resources */,
+				04666DD82399B535002B408C /* Day06Input in Resources */,
 				04666DC9239858C7002B408C /* Day05Input_2018 in Resources */,
 				0470DA482392DC6500DDAFCB /* Assets.xcassets in Resources */,
 				04CDAB05239622BF006CB388 /* Day03Input in Resources */,
@@ -314,6 +346,7 @@
 				0470DA78239455A800DDAFCB /* Day03Input_2018 in Resources */,
 				0470DA7323944C9500DDAFCB /* Day2Input_2018 in Resources */,
 				0470DA592392E19900DDAFCB /* Day01Input in Resources */,
+				04B93331239BFFE300B543A7 /* Day07Input in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,10 +366,12 @@
 				0470DA572392E0CB00DDAFCB /* Day01VC.swift in Sources */,
 				04CDAB072396DE9E006CB388 /* IntPoint.swift in Sources */,
 				0470DA3F2392DC6400DDAFCB /* AppDelegate.swift in Sources */,
+				04B93333239C859400B543A7 /* Misc.swift in Sources */,
 				0470DA412392DC6400DDAFCB /* SceneDelegate.swift in Sources */,
 				0470DA6B23943D0700DDAFCB /* Day01VC_2018.swift in Sources */,
 				04CDAB11239712C9006CB388 /* Day04VC.swift in Sources */,
 				04CDAB18239853E3006CB388 /* Day05VC_2018.swift in Sources */,
+				04666DD62399B4F3002B408C /* Day06VC.swift in Sources */,
 				04CDAB092396DF5E006CB388 /* IntMachine.swift in Sources */,
 				04CDAB152398538B006CB388 /* String+Ext.swift in Sources */,
 				04666DCC2398C430002B408C /* Day05VC.swift in Sources */,
@@ -344,6 +379,7 @@
 				0470DA612393D3EF00DDAFCB /* AoCVC.swift in Sources */,
 				0470DA762394516F00DDAFCB /* Day03VC_2018.swift in Sources */,
 				0470DA632393DD1C00DDAFCB /* Math.swift in Sources */,
+				04B9332F239BFFD400B543A7 /* Day07VC.swift in Sources */,
 				04CDAB0C2396FA45006CB388 /* Day04VC_2018.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

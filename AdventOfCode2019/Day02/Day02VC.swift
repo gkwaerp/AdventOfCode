@@ -19,18 +19,32 @@ class Day02VC: AoCVC, AdventDay {
 
     func solveFirst() {
         self.machine.reset(noun: 12, verb: 2)
-        let result = self.machine.runProgram()
-        self.setSolution1("\(result)")
+        var outputs = [Int]()
+        let result = self.machine.run(outputHandler: { (outputValue) in
+            outputs.append(outputValue)
+        })
+        switch result {
+        case .exitedSuccessfully(let memoryAtZeroIndex):
+            self.setSolution1("\(memoryAtZeroIndex)")
+        default: break
+        }
     }
 
     func solveSecond() {
+        var outputs = [Int]()
         for noun in 0...99 {
             for verb in 0...99 {
                 self.machine.reset(noun: noun, verb: verb)
-                let result = self.machine.runProgram()
-                if result == 19690720 {
-                    self.setSolution2("\(noun * 100 + verb)")
-                    return
+                let result = self.machine.run(outputHandler: { (outputValue) in
+                    outputs.append(outputValue)
+                })
+                switch result {
+                case .exitedSuccessfully(let memoryAtZeroIndex):
+                    if memoryAtZeroIndex == 19690720 {
+                        self.setSolution2("\(noun * 100 + verb)")
+                        return
+                    }
+                default: break
                 }
             }
         }
