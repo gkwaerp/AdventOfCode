@@ -19,9 +19,17 @@ struct IntPoint: Hashable {
     static func adding(_ a: IntPoint, _ b: IntPoint) -> IntPoint {
         return IntPoint(x: a.x + b.x, y: a.y + b.y)
     }
-
+    
     static func subtracting(_ a: IntPoint, _ b: IntPoint) -> IntPoint {
         return IntPoint(x: a.x - b.x, y: a.y - b.y)
+    }
+    
+    static func scaling(_ a: IntPoint, s: Int) -> IntPoint {
+        return scaling(a, sx: s, sy: s)
+    }
+    
+    static func scaling(_ a: IntPoint, sx: Int, sy: Int) -> IntPoint {
+        return IntPoint(x: a.x * sx, y: a.y * sy)
     }
     
     static var origin: IntPoint {
