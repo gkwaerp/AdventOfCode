@@ -14,7 +14,7 @@ class Day05VC: AoCVC, AdventDay {
     func loadInput() {
         let line = FileLoader.loadText(fileName: "Day05Input").first!
         let ints = line.components(separatedBy: ",").compactMap({Int($0)})
-        self.machine.loadNewProgram(memory: ints, noun: nil, verb: nil)
+        self.machine.loadNewProgram(memory: ints)
     }
 
     func solveFirst() {
@@ -22,6 +22,7 @@ class Day05VC: AoCVC, AdventDay {
         self.machine.inputs = [1]
         self.machine.run(outputHandler: { (outputValue) in
             outputs.append(outputValue)
+            print(outputValue)
         })
         self.setSolution1("\(outputs.last!)")
     }
