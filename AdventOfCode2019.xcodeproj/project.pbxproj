@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		045B0082239FAFEA001D4C03 /* Day10VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B0081239FAFEA001D4C03 /* Day10VC.swift */; };
+		045B0084239FB033001D4C03 /* Day10Input in Resources */ = {isa = PBXBuildFile; fileRef = 045B0083239FB033001D4C03 /* Day10Input */; };
 		04666DC9239858C7002B408C /* Day05Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 04666DC8239858C7002B408C /* Day05Input_2018 */; };
 		04666DCC2398C430002B408C /* Day05VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04666DCB2398C430002B408C /* Day05VC.swift */; };
 		04666DCE2398C483002B408C /* Day05Input in Resources */ = {isa = PBXBuildFile; fileRef = 04666DCD2398C483002B408C /* Day05Input */; };
@@ -53,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		045B0081239FAFEA001D4C03 /* Day10VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day10VC.swift; sourceTree = "<group>"; };
+		045B0083239FB033001D4C03 /* Day10Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day10Input; sourceTree = "<group>"; };
 		04666DC8239858C7002B408C /* Day05Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day05Input_2018; sourceTree = "<group>"; };
 		04666DCB2398C430002B408C /* Day05VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day05VC.swift; sourceTree = "<group>"; };
 		04666DCD2398C483002B408C /* Day05Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day05Input; sourceTree = "<group>"; };
@@ -111,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		045B0080239FAFD9001D4C03 /* Day10 */ = {
+			isa = PBXGroup;
+			children = (
+				045B0081239FAFEA001D4C03 /* Day10VC.swift */,
+				045B0083239FB033001D4C03 /* Day10Input */,
+			);
+			path = Day10;
+			sourceTree = "<group>";
+		};
 		04666DCA2398C41E002B408C /* Day05 */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +171,7 @@
 				04B9332D239BFFC600B543A7 /* Day07 */,
 				04D5E91C239D33BA002BCD3B /* Day08 */,
 				04D5E926239E2CA2002BCD3B /* Day09 */,
+				045B0080239FAFD9001D4C03 /* Day10 */,
 				0470DA522392DD0000DDAFCB /* Helpers */,
 				0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */,
 				0470DA402392DC6400DDAFCB /* SceneDelegate.swift */,
@@ -368,6 +382,7 @@
 				04D5E92A239E2CBC002BCD3B /* Day09Input in Resources */,
 				04D5E920239D33F9002BCD3B /* Day08Input in Resources */,
 				04666DCE2398C483002B408C /* Day05Input in Resources */,
+				045B0084239FB033001D4C03 /* Day10Input in Resources */,
 				04CDAB0E2396FA55006CB388 /* Day04Input_2018 in Resources */,
 				04666DD82399B535002B408C /* Day06Input in Resources */,
 				04666DC9239858C7002B408C /* Day05Input_2018 in Resources */,
@@ -394,6 +409,7 @@
 				04B93335239C8E2F00B543A7 /* Node.swift in Sources */,
 				0470DA5B2392E48A00DDAFCB /* FileLoader.swift in Sources */,
 				0470DA542392DD0A00DDAFCB /* UIView+Ext.swift in Sources */,
+				045B0082239FAFEA001D4C03 /* Day10VC.swift in Sources */,
 				0470DA662393E30900DDAFCB /* Day02VC.swift in Sources */,
 				0470DA712394495300DDAFCB /* Day02VC_2018.swift in Sources */,
 				0470DA432392DC6400DDAFCB /* Overview2019ViewController.swift in Sources */,

@@ -35,4 +35,20 @@ struct IntPoint: Hashable {
     static var origin: IntPoint {
         return IntPoint(x: 0, y: 0)
     }
+
+    static func angle(between a: IntPoint, and b: IntPoint, invertY: Bool) -> Double? {
+        let delta = IntPoint.subtracting(b, a)
+        if delta.x == 0 && delta.y == 0 {
+            return nil
+        }
+
+        let x = Double(delta.x)
+        let y = invertY ? Double(-delta.y) : Double(delta.y)
+        return atan2(x, y)
+    }
+
+    static func angleInDegrees(between a: IntPoint, and b: IntPoint, invertY: Bool) -> Double? {
+        guard let radians = IntPoint.angle(between: a, and: b, invertY: invertY) else { return nil }
+        return (radians * 180.0 / Double.pi)
+    }
 }
