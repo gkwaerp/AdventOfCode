@@ -38,7 +38,7 @@ class Day03VC: AoCVC, AdventDay {
                 }
                 
                 for _ in 0..<numSteps {
-                    currPoint = IntPoint.adding(currPoint, direction)
+                    currPoint += direction
                     self.addPoint(currPoint)
                 }
             }
