@@ -25,7 +25,9 @@ extension RandomAccessCollection where Element : Comparable {
         }
         return slice.startIndex
     }
-    
+}
+
+extension RandomAccessCollection {
     func insertionIndex(for predicate: (Element) -> Bool) -> Index {
         var slice: SubSequence = self[...]
         

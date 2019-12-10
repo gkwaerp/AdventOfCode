@@ -59,7 +59,7 @@ class Day10VC: AoCVC, AdventDay {
     func loadInput() {
         let lines = FileLoader.loadText(fileName: "Day10Input")
         for (y, line) in lines.enumerated() {
-            let chars = line.map({"\($0)"})
+            let chars = line.toStringArray()
             for (x, char) in chars.enumerated() {
                 if char == "#" {
                     self.asteroids.append(Asteroid(point: IntPoint(x: x, y: y)))
