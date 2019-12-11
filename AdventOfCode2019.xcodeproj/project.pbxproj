@@ -35,6 +35,7 @@
 		0470DA762394516F00DDAFCB /* Day03VC_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA752394516F00DDAFCB /* Day03VC_2018.swift */; };
 		0470DA78239455A800DDAFCB /* Day03Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA77239455A800DDAFCB /* Day03Input_2018 */; };
 		0470DA7D2394D6FC00DDAFCB /* Day02Input in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA7C2394D6FC00DDAFCB /* Day02Input */; };
+		049234E623A16B6900697D9D /* IntImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049234E523A16B6900697D9D /* IntImage.swift */; };
 		0496B4A423A0DF9700501D2F /* Day11VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496B4A323A0DF9700501D2F /* Day11VC.swift */; };
 		0496B4A623A0E34000501D2F /* Day11Input in Resources */ = {isa = PBXBuildFile; fileRef = 0496B4A523A0E34000501D2F /* Day11Input */; };
 		04B9332F239BFFD400B543A7 /* Day07VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9332E239BFFD400B543A7 /* Day07VC.swift */; };
@@ -87,6 +88,7 @@
 		0470DA752394516F00DDAFCB /* Day03VC_2018.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03VC_2018.swift; sourceTree = "<group>"; };
 		0470DA77239455A800DDAFCB /* Day03Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day03Input_2018; sourceTree = "<group>"; };
 		0470DA7C2394D6FC00DDAFCB /* Day02Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day02Input; sourceTree = "<group>"; };
+		049234E523A16B6900697D9D /* IntImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntImage.swift; sourceTree = "<group>"; };
 		0496B4A323A0DF9700501D2F /* Day11VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day11VC.swift; sourceTree = "<group>"; };
 		0496B4A523A0E34000501D2F /* Day11Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day11Input; sourceTree = "<group>"; };
 		04B9332E239BFFD400B543A7 /* Day07VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day07VC.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				04CDAB142398538B006CB388 /* String+Ext.swift */,
 				04B93332239C859400B543A7 /* Misc.swift */,
 				04B93334239C8E2F00B543A7 /* Node.swift */,
+				049234E523A16B6900697D9D /* IntImage.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				04666DD62399B4F3002B408C /* Day06VC.swift in Sources */,
 				04CDAB092396DF5E006CB388 /* IntMachine.swift in Sources */,
 				04CDAB152398538B006CB388 /* String+Ext.swift in Sources */,
+				049234E623A16B6900697D9D /* IntImage.swift in Sources */,
 				04666DCC2398C430002B408C /* Day05VC.swift in Sources */,
 				04CDAB0323962299006CB388 /* Day03VC.swift in Sources */,
 				0470DA612393D3EF00DDAFCB /* AoCVC.swift in Sources */,
