@@ -38,12 +38,16 @@ class IntPoint: Equatable, Hashable {
         return abs(self.x - other.x) + abs(self.y - other.y)
     }
     
-    func scaling(s: Int) -> IntPoint {
-        return self.scaling(sx: s, sy: s)
+    func scaled(by scalar: Int) -> IntPoint {
+        return self.scaled(xScale: scalar, yScale: scalar)
     }
     
-    func scaling(sx: Int, sy: Int) -> IntPoint {
-        return IntPoint(x: self.x * sx, y: self.y * sy)
+    func scaled(xScale: Int, yScale: Int) -> IntPoint {
+        return IntPoint(x: self.x * xScale, y: self.y * yScale)
+    }
+
+    func move(in direction: Direction, numSteps: Int) -> IntPoint {
+        return self + direction.movementVector.scaled(by: numSteps)
     }
     
     static func +(lhs: IntPoint, rhs: IntPoint) -> IntPoint {

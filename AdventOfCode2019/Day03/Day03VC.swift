@@ -25,20 +25,12 @@ class Day03VC: AoCVC, AdventDay {
             let components = string.components(separatedBy: ",")
             var currPoint = IntPoint(x: 0, y: 0)
             for component in components {
-                let directionString = component.first!
+                let directionString = "\(component.first!)"
                 let numSteps = Int(component.dropFirst())!
-                
-                var direction: IntPoint!
-                switch directionString {
-                case "U": direction = IntPoint(x: 0, y: 1)
-                case "D": direction = IntPoint(x: 0, y: -1)
-                case "L": direction = IntPoint(x: -1, y: 0)
-                case "R": direction = IntPoint(x: 1, y: 0)
-                default: fatalError()
-                }
+                let movementVector = Direction.from(string: directionString).movementVector
                 
                 for _ in 0..<numSteps {
-                    currPoint += direction
+                    currPoint += movementVector
                     self.addPoint(currPoint)
                 }
             }

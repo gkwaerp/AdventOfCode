@@ -10,25 +10,6 @@ import UIKit
 
 class Day11VC: AoCVC, AdventDay {
     class PaintRobot {
-        enum Direction: Int, CaseIterable {
-            case up, left, down, right
-
-            mutating func turn(left: Bool) {
-                let offset = left ? 1 : Direction.allCases.count - 1
-                let newRawValue = (self.rawValue + offset) % Direction.allCases.count
-                self = Direction(rawValue: newRawValue)!
-            }
-
-            var movementVector: IntPoint {
-                switch self {
-                case .up: return IntPoint(x: 0, y: -1)
-                case .down: return IntPoint(x: 0, y: 1)
-                case .left: return IntPoint(x: -1, y: 0)
-                case .right: return IntPoint(x: 1, y: 0)
-                }
-            }
-        }
-        
         enum State {
             case painting
             case moving

@@ -38,6 +38,7 @@
 		049234E623A16B6900697D9D /* IntImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049234E523A16B6900697D9D /* IntImage.swift */; };
 		0496B4A423A0DF9700501D2F /* Day11VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496B4A323A0DF9700501D2F /* Day11VC.swift */; };
 		0496B4A623A0E34000501D2F /* Day11Input in Resources */ = {isa = PBXBuildFile; fileRef = 0496B4A523A0E34000501D2F /* Day11Input */; };
+		049899AC23A19F85004CF0FB /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049899AB23A19F85004CF0FB /* Direction.swift */; };
 		04B9332F239BFFD400B543A7 /* Day07VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9332E239BFFD400B543A7 /* Day07VC.swift */; };
 		04B93331239BFFE300B543A7 /* Day07Input in Resources */ = {isa = PBXBuildFile; fileRef = 04B93330239BFFE300B543A7 /* Day07Input */; };
 		04B93333239C859400B543A7 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B93332239C859400B543A7 /* Misc.swift */; };
@@ -91,6 +92,7 @@
 		049234E523A16B6900697D9D /* IntImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntImage.swift; sourceTree = "<group>"; };
 		0496B4A323A0DF9700501D2F /* Day11VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day11VC.swift; sourceTree = "<group>"; };
 		0496B4A523A0E34000501D2F /* Day11Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day11Input; sourceTree = "<group>"; };
+		049899AB23A19F85004CF0FB /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		04B9332E239BFFD400B543A7 /* Day07VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day07VC.swift; sourceTree = "<group>"; };
 		04B93330239BFFE300B543A7 /* Day07Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day07Input; sourceTree = "<group>"; };
 		04B93332239C859400B543A7 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				04B93332239C859400B543A7 /* Misc.swift */,
 				04B93334239C8E2F00B543A7 /* Node.swift */,
 				049234E523A16B6900697D9D /* IntImage.swift */,
+				049899AB23A19F85004CF0FB /* Direction.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				0470DA662393E30900DDAFCB /* Day02VC.swift in Sources */,
 				0496B4A423A0DF9700501D2F /* Day11VC.swift in Sources */,
 				0470DA712394495300DDAFCB /* Day02VC_2018.swift in Sources */,
+				049899AC23A19F85004CF0FB /* Direction.swift in Sources */,
 				0470DA432392DC6400DDAFCB /* Overview2019ViewController.swift in Sources */,
 				0470DA572392E0CB00DDAFCB /* Day01VC.swift in Sources */,
 				04CDAB072396DE9E006CB388 /* IntPoint.swift in Sources */,
