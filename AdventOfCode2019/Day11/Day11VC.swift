@@ -125,7 +125,7 @@ class Day11VC: AoCVC, AdventDay {
         }
     }
 
-    var robot: PaintRobot!
+    private var robot: PaintRobot!
 
     func loadInput() {
         let line = FileLoader.loadText(fileName: "Day11Input").first!
