@@ -9,68 +9,111 @@
 import UIKit
 
 class Day11VC: AoCVC, AdventDay {
-    struct PaintRobot {
+    class PaintRobot {
         enum Color: Int {
             case black = 0
             case white = 1
         }
-        var surface = [IntPoint: Color]()
 
-        enum Direction {
-            case up, down, left, right
+        enum Direction: Int, CaseIterable {
+            case up, left, down, right
 
             mutating func turn(left: Bool) {
-                switch self {
-                case .up:
-                    self = left ? .left : .right
-                case .down:
-                    self = left ? .right : .left
-                case .left:
-                    self = left ? .down : .up
-                case .right:
-                    self = left ? .up : .down
-                }
+                let offset = left ? 1 : Direction.allCases.count - 1
+                let newRawValue = (self.rawValue + offset) % Direction.allCases.count
+                self = Direction(rawValue: newRawValue)!
             }
 
-            var intPoint: IntPoint {
+            var movementVector: IntPoint {
                 switch self {
-                case .up:
-                    return IntPoint(x: 0, y: -1)
-                case .down:
-                    return IntPoint(x: 0, y: 1)
-                case .left:
-                    return IntPoint(x: -1, y: 0)
-                case .right:
-                    return IntPoint(x: 1, y: 0)
+                case .up: return IntPoint(x: 0, y: -1)
+                case .down: return IntPoint(x: 0, y: 1)
+                case .left: return IntPoint(x: -1, y: 0)
+                case .right: return IntPoint(x: 1, y: 0)
                 }
             }
         }
-
-        var currentDirection: Direction = .up
-        var currentPosition: IntPoint = .origin
-
-        func getCurrentColor() -> Color {
-            return self.surface[self.currentPosition] ?? .black
+        
+        enum State {
+            case painting
+            case moving
         }
 
-        mutating func reset() {
+        private let brain: IntMachine
+        var surface = [IntPoint: Color]()
+
+        private var currentDirection: Direction = .up
+        private var currentPosition: IntPoint = .origin
+        private var currentState: State = .painting
+        
+        init(program: [Int]) {
+            self.brain = IntMachine(memory: program)
+        }
+
+        func reset() {
             self.surface = [:]
             self.currentDirection = .up
             self.currentPosition = .origin
+            self.brain.reset()
         }
 
-        mutating func paint(color: Color) {
-            self.surface[self.currentPosition] = color
+        func getCurrentColor() -> Color {
+            return self.getColor(at: self.currentPosition)
         }
 
-        mutating func paint(_ rawValue: Int) {
+        func getColor(at point: IntPoint) -> Color {
+            return self.surface[point] ?? .black
+        }
+
+        private func paint(color: Color) {
+            self.setColor(color, at: self.currentPosition)
+        }
+
+        func setColor(_ color: Color, at point: IntPoint) {
+            self.surface[point] = color
+        }
+
+        func paint(_ rawValue: Int) {
             let color = Color(rawValue: rawValue)!
             self.paint(color: color)
         }
-
-        mutating func turnAndMove(left: Bool) {
+        
+        func turn(left: Bool) {
             self.currentDirection.turn(left: left)
-            self.currentPosition += self.currentDirection.intPoint
+        }
+        
+        private func move() {
+            self.currentPosition += self.currentDirection.movementVector
+        }
+        
+        func run() {
+            var finished = false
+            while !finished {
+                let brainState = self.brain.run { (outputValue) in
+                    self.handleAction(value: outputValue)
+                }
+
+                switch brainState {
+                case .exitedSuccessfully:
+                    finished = true
+                case .waitingForInput:
+                    self.brain.inputs.append(self.getCurrentColor().rawValue)
+                default: break
+                }
+            }
+        }
+
+        private func handleAction(value: Int) {
+            switch self.currentState {
+            case .painting:
+                self.paint(value)
+                self.currentState = .moving
+            case .moving:
+                let left = value == 0
+                self.turn(left: left)
+                self.move()
+                self.currentState = .painting
+            }
         }
 
         func print() -> String {
@@ -109,65 +152,23 @@ class Day11VC: AoCVC, AdventDay {
         }
     }
 
-    let machine = IntMachine()
-    var robot = PaintRobot()
+    var robot: PaintRobot!
 
     func loadInput() {
         let line = FileLoader.loadText(fileName: "Day11Input").first!
         let ints = line.components(separatedBy: ",").compactMap({Int($0)})
-        self.machine.loadNewProgram(memory: ints)
+        self.robot = PaintRobot(program: ints)
     }
     
     func solveFirst() {
-        var finished = false
-        while !finished {
-            var isPainting = true
-            let state = self.machine.run { (outputValue) in
-                if isPainting {
-                    self.robot.paint(outputValue)
-                } else {
-                    let left = outputValue == 0
-                    self.robot.turnAndMove(left: left)
-                }
-                isPainting.toggle()
-            }
-            switch state {
-            case .exitedSuccessfully:
-                finished = true
-            case .waitingForInput:
-                machine.inputs.append(self.robot.getCurrentColor().rawValue)
-            default: break
-            }
-        }
-
+        self.robot.run()
         self.setSolution1("\(self.robot.surface.count)")
     }
     
     func solveSecond() {
-        self.machine.reset()
         self.robot.reset()
-        self.robot.paint(color: .white)
-
-        var finished = false
-        while !finished {
-            var isPainting = true
-            let state = self.machine.run { (outputValue) in
-                if isPainting {
-                    self.robot.paint(outputValue)
-                } else {
-                    let left = outputValue == 0
-                    self.robot.turnAndMove(left: left)
-                }
-                isPainting.toggle()
-            }
-            switch state {
-            case .exitedSuccessfully:
-                finished = true
-            case .waitingForInput:
-                machine.inputs.append(self.robot.getCurrentColor().rawValue)
-            default: break
-            }
-        }
+        self.robot.setColor(.white, at: .origin)
+        self.robot.run()
 
         self.setSolution2(self.robot.print())
     }

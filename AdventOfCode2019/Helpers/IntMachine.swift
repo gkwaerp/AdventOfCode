@@ -175,7 +175,7 @@ class IntMachine {
 
     init() { }
 
-    init(memory: [Int], noun: Int?, verb: Int?) {
+    init(memory: [Int], noun: Int? = nil, verb: Int? = nil) {
         self.loadNewProgram(memory: memory, noun: noun, verb: verb)
     }
 
