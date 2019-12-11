@@ -71,12 +71,12 @@ class Day11VC: AoCVC, AdventDay {
             self.surface[point] = color
         }
         
-        func turn(left: Bool) {
-            self.currentDirection.turn(left: left)
-        }
-        
         private func move() {
             self.currentPosition += self.currentDirection.movementVector
+        }
+
+        private func turn(left: Bool) {
+            self.currentDirection.turn(left: left)
         }
         
         func print() -> String {
