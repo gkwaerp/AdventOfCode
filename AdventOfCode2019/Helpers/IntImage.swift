@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct IntImage {
-    enum Color: Int {
-        case black = 0
-        case white = 1
-        case transparent = 2
-    }
+enum Color: Int {
+    case black = 0
+    case white = 1
+    case transparent = 2
+}
 
+class IntImage {
     struct Layer {
         var width: Int
         var height: Int
@@ -33,7 +33,7 @@ struct IntImage {
         }
 
         func asText() -> String {
-            var finalText = ""
+            var finalText = "\n"
             for y in 0..<self.height {
                 for x in 0..<self.width {
                     switch self.getPixel(x: x, y: y) {
@@ -54,14 +54,18 @@ struct IntImage {
     var height: Int
     var layers: [Layer]
 
-    init(width: Int, height: Int, data: [Int]) {
+    convenience init(width: Int, height: Int, data: [Int]) {
+        self.init(width: width, height: height, pixels: data.map({Color(rawValue: $0)!}))
+    }
+
+    init(width: Int, height: Int, pixels: [Color]) {
         let pixelsPerLayer = width * height
-        let numLayers = data.count / pixelsPerLayer
-        var dataToUse = data
+        let numLayers = pixels.count / pixelsPerLayer
+        var pixelsToUse = pixels
         var layers = [Layer]()
         for _ in 0..<numLayers {
-            let layerData = Array(dataToUse.prefix(pixelsPerLayer)).map({Color(rawValue: $0)!})
-            dataToUse = Array(dataToUse.dropFirst(pixelsPerLayer))
+            let layerData = Array(pixelsToUse.prefix(pixelsPerLayer))
+            pixelsToUse = Array(pixelsToUse.dropFirst(pixelsPerLayer))
             layers.append(Layer(width: width, height: height, pixels: layerData))
         }
 

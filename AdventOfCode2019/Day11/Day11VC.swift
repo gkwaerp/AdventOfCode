@@ -10,11 +10,6 @@ import UIKit
 
 class Day11VC: AoCVC, AdventDay {
     class PaintRobot {
-        enum Color: Int {
-            case black = 0
-            case white = 1
-        }
-
         enum Direction: Int, CaseIterable {
             case up, left, down, right
 
@@ -117,38 +112,16 @@ class Day11VC: AoCVC, AdventDay {
         }
 
         func print() -> String {
-            var minX = Int(INT_MAX)
-            var maxX = Int(-INT_MAX)
-            var minY = Int(INT_MAX)
-            var maxY = Int(-INT_MAX)
+            let gridInfo = IntPoint.gridInfo(from: self.surface.keys)
 
-            for key in self.surface.keys {
-                minX = min(minX, key.x)
-                maxX = max(maxX, key.x)
-                minY = min(minY, key.y)
-                maxY = max(maxY, key.y)
+            let allGridPoints = IntPoint.gridPoints(x: gridInfo.width, y: gridInfo.height)
+            let pixels = allGridPoints.map { (rawPoint) -> Color in
+                let actualPoint = rawPoint + gridInfo.minExtents
+                return getColor(at: actualPoint)
             }
 
-            let minPoint = IntPoint(x: minX, y: minY)
-            let maxPoint = IntPoint(x: maxX, y: maxY)
-            let size = maxPoint - minPoint
-
-            var finalString = "\n"
-            for y in 0...size.y {
-                for x in 0...size.x {
-                    let rawPoint = IntPoint(x: x, y: y)
-                    let actualPoint = rawPoint + minPoint
-                    if self.surface[actualPoint] == .white {
-                        finalString.append("X")
-                    } else {
-                        finalString.append(" ")
-                    }
-                }
-                finalString.append("\n")
-            }
-            finalString.append("\n")
-
-            return finalString
+            let image = IntImage(width: gridInfo.width, height: gridInfo.height, pixels: pixels)
+            return image.rasterized.asText()
         }
     }
 

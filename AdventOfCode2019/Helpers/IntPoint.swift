@@ -8,9 +8,27 @@
 
 import Foundation
 
-struct IntPoint: Equatable, Hashable {
-    let x: Int
-    let y: Int
+class IntPoint: Equatable, Hashable {
+    var x: Int
+    var y: Int
+
+    init(x: Int, y: Int) {
+        self.x = x
+        self.y = y
+    }
+
+    static func == (lhs: IntPoint, rhs: IntPoint) -> Bool {
+        return lhs.x == rhs.x && lhs.y == rhs.y
+    }
+
+    func copy() -> IntPoint {
+        return IntPoint(x: self.x, y: self.y)
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.x)
+        hasher.combine(self.y)
+    }
     
     static var origin: IntPoint {
         return IntPoint(x: 0, y: 0)
@@ -55,5 +73,48 @@ struct IntPoint: Equatable, Hashable {
     static func angleInDegrees(between a: IntPoint, and b: IntPoint, invertY: Bool) -> Double? {
         guard let radians = IntPoint.angle(between: a, and: b, invertY: invertY) else { return nil }
         return (radians * 180.0 / Double.pi)
+    }
+
+    static func gridInfo<T: Collection>(from coordinates: T) -> GridInfo where T.Element: IntPoint {
+        guard coordinates.count > 0 else {
+            return GridInfo.zero
+        }
+
+        let minExtents = coordinates.first!.copy()
+        let maxExtents = coordinates.first!.copy()
+
+        for point in coordinates {
+            let intPoint = point as IntPoint
+
+            minExtents.x = min(minExtents.x, intPoint.x)
+            maxExtents.x = max(maxExtents.x, intPoint.x)
+            minExtents.y = min(minExtents.y, intPoint.y)
+            maxExtents.y = max(maxExtents.y, intPoint.y)
+        }
+
+        let size = maxExtents - minExtents
+        return GridInfo(minExtents: minExtents, maxExtents: maxExtents, width: size.x + 1, height: size.y + 1)
+    }
+
+    static func gridPoints(x: Int, y: Int) -> [IntPoint] {
+        var allPoints = [IntPoint]()
+        for yPos in 0..<y {
+            for xPos in 0..<x {
+                allPoints.append(IntPoint(x: xPos, y: yPos))
+            }
+        }
+        return allPoints
+    }
+}
+
+
+struct GridInfo {
+    let minExtents: IntPoint
+    let maxExtents: IntPoint
+    let width: Int
+    let height: Int
+
+    static var zero: GridInfo {
+        return GridInfo(minExtents: .origin, maxExtents: .origin, width: 0, height: 0)
     }
 }
