@@ -12,7 +12,6 @@ class Overview2019ViewController: UIViewController {
     private let mainStackView = UIStackView()
     private var subStackViews = [UIStackView]()
 
-    private let enabledDays = Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
     private let verticalSpacing: CGFloat = 4
     private let horizontalSpacing: CGFloat = 16
     
@@ -54,7 +53,7 @@ class Overview2019ViewController: UIViewController {
         button.setTitle("Day \(dayString)", for: .normal)
         button.tag = day
         button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
-        button.isEnabled = self.enabledDays.contains(day)
+        button.isEnabled = (self.getViewController(for: day) != nil)
         return button
     }
     
@@ -87,28 +86,28 @@ class Overview2019ViewController: UIViewController {
     }
     
     @objc private func buttonTapped(sender: UIButton) {
-        var vc: UIViewController? = nil
-        switch sender.tag {
-        case 1: vc = Day01VC()
-        case 2: vc = Day02VC()
-        case 3: vc = Day03VC()
-        case 4: vc = Day04VC()
-        case 5: vc = Day05VC()
-        case 6: vc = Day06VC()
-        case 7: vc = Day07VC()
-        case 8: vc = Day08VC()
-        case 9: vc = Day09VC()
-        case 10: vc = Day10VC()
-        case 11: vc = Day11VC()
-        case 12: vc = Day12VC()
-        default: break
-        }
-        
-        if let vc = vc {
+        if let vc = self.getViewController(for: sender.tag) {
             vc.modalPresentationStyle = .overFullScreen
             vc.title = String(format: "Day %02d", sender.tag)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-}
 
+    private func getViewController(for day: Int) -> UIViewController? {
+        switch day {
+        case 1: return Day01VC()
+        case 2: return Day02VC()
+        case 3: return Day03VC()
+        case 4: return Day04VC()
+        case 5: return Day05VC()
+        case 6: return Day06VC()
+        case 7: return Day07VC()
+        case 8: return Day08VC()
+        case 9: return Day09VC()
+        case 10: return Day10VC()
+        case 11: return Day11VC()
+        case 12: return Day12VC()
+        default: return nil
+        }
+    }
+}
