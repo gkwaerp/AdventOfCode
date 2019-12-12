@@ -49,6 +49,10 @@ class IntPoint: Equatable, Hashable {
     func move(in direction: Direction, numSteps: Int) -> IntPoint {
         return self + direction.movementVector.scaled(by: numSteps)
     }
+
+    func magnitude() -> Int {
+        return abs(self.x) + abs(self.y)
+    }
     
     static func +(lhs: IntPoint, rhs: IntPoint) -> IntPoint {
         return IntPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
