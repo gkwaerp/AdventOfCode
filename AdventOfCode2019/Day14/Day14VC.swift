@@ -118,18 +118,20 @@ class Day14VC: AoCVC, AdventDay {
     func solveSecond() {
         var currentMinQuantity = 0
         var currentMaxQuantity = 1_000_000_000_000
+        var bestGenerated = 0
         
         while currentMinQuantity != currentMaxQuantity {
             self.chemicalFactory.reset(oreQuantity: 1_000_000_000_000)
-            let currentQuantity = currentMaxQuantity / 2 + currentMinQuantity / 2
+            let currentQuantity = (currentMinQuantity + currentMaxQuantity) / 2
             let generated = self.chemicalFactory.generateChemical(chemical: "FUEL", quantity: currentQuantity)
             if generated {
-                currentMinQuantity = currentQuantity
+                bestGenerated = currentQuantity
+                currentMinQuantity = currentQuantity + 1
             } else {
-                currentMaxQuantity = currentQuantity - 1
+                currentMaxQuantity = currentQuantity
             }
         }
         
-        self.setSolution2("\(currentMinQuantity)")
+        self.setSolution2("\(bestGenerated)")
     }
 }
