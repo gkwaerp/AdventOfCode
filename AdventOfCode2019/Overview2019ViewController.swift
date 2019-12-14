@@ -107,6 +107,8 @@ class Overview2019ViewController: UIViewController {
         case 10: return Day10VC()
         case 11: return Day11VC()
         case 12: return Day12VC()
+        case 13: return Day13VC()
+        case 14: return Day14VC()
         default: return nil
         }
     }

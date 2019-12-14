@@ -75,6 +75,10 @@ class IntMachine {
 
         func writeValue(_ value: Int, to: Parameter) {
             let writeIndex = self.getAddress(for: to)
+            self.writeValueDirect(value, to: writeIndex)
+        }
+
+        func writeValueDirect(_ value: Int, to writeIndex: Int) {
             self.state[writeIndex] = value
         }
 
@@ -195,6 +199,10 @@ class IntMachine {
         if let verb = verb {
             self.workingMemory.state[2] = verb
         }
+    }
+
+    func setMemoryDirect(memoryAddress: Int, value: Int) {
+        self.workingMemory.writeValueDirect(value, to: memoryAddress)
     }
 
     private func updateInstructionPointer(from instruction: Instruction) {

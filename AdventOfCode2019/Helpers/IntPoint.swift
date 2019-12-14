@@ -8,7 +8,11 @@
 
 import Foundation
 
-class IntPoint: Equatable, Hashable {
+class IntPoint: Equatable, Hashable, CustomStringConvertible {
+    var description: String {
+        return "X: \(self.x), Y: \(self.y)"
+    }
+    
     var x: Int
     var y: Int
 
