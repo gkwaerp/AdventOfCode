@@ -9,7 +9,6 @@
 import Foundation
 
 protocol Node {
-    var id: String { get }
     var children: [Node] { set get }
     var parent: Node? { set get }
 }

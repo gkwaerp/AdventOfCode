@@ -18,7 +18,7 @@ class Day11VC: AoCVC, AdventDay {
         private let brain: IntMachine
         var surface = [IntPoint: Color]()
         
-        private var currentDirection: Direction = .up
+        private var currentDirection: Direction = .north
         private var currentPosition: IntPoint = .origin
         private var currentState: State = .painting
         
@@ -28,7 +28,7 @@ class Day11VC: AoCVC, AdventDay {
         
         func reset() {
             self.surface = [:]
-            self.currentDirection = .up
+            self.currentDirection = .north
             self.currentPosition = .origin
             self.brain.reset()
         }

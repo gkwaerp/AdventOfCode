@@ -9,29 +9,44 @@
 import Foundation
 
 enum Direction: Int, CaseIterable {
-    case up, left, down, right
-
-    mutating func turn(left: Bool) {
-        let offset = left ? 1 : Direction.allCases.count - 1
-        let newRawValue = (self.rawValue + offset) % Direction.allCases.count
-        self = Direction(rawValue: newRawValue)!
-    }
-
+    case north = 1
+    case south = 2
+    case west = 3
+    case east = 4
+    
     var movementVector: IntPoint {
         switch self {
-        case .up: return IntPoint(x: 0, y: -1)
-        case .down: return IntPoint(x: 0, y: 1)
-        case .left: return IntPoint(x: -1, y: 0)
-        case .right: return IntPoint(x: 1, y: 0)
+        case .north: return IntPoint(x: 0, y: -1)
+        case .south: return IntPoint(x: 0, y: 1)
+        case .west: return IntPoint(x: -1, y: 0)
+        case .east: return IntPoint(x: 1, y: 0)
         }
     }
-
+    
+    var reversed: Direction {
+        switch self {
+        case .north: return .south
+        case .south: return .north
+        case .east: return .west
+        case .west: return .east
+        }
+    }
+    
+    mutating func turn(left: Bool) {
+        switch self {
+        case .north: self = left ? .west : .east
+        case .south: self = left ? .east : .west
+        case .east: self = left ? .north : .south
+        case .west: self = left ? .south : .north
+        }
+    }
+    
     static func from(string: String) -> Direction {
         switch string {
-        case "U": return .up
-        case "D": return .down
-        case "L": return .left
-        case "R": return .right
+        case "U", "N": return .north
+        case "D", "S": return .south
+        case "L", "W": return .west
+        case "R", "E": return .east
         default: fatalError()
         }
     }
