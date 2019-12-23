@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0410E7C623A7FABF00916D5B /* Day16VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410E7C523A7FABF00916D5B /* Day16VC.swift */; };
 		0410E7C823A7FAC800916D5B /* Day16Input in Resources */ = {isa = PBXBuildFile; fileRef = 0410E7C723A7FAC800916D5B /* Day16Input */; };
+		0410E7CB23A9484400916D5B /* Day17VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410E7CA23A9484400916D5B /* Day17VC.swift */; };
+		0410E7CD23A9484F00916D5B /* Day17Input in Resources */ = {isa = PBXBuildFile; fileRef = 0410E7CC23A9484F00916D5B /* Day17Input */; };
+		0410E7D523AB8B0B00916D5B /* Day19VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410E7D423AB8B0B00916D5B /* Day19VC.swift */; };
+		0410E7D723AB8B2B00916D5B /* Day19Input in Resources */ = {isa = PBXBuildFile; fileRef = 0410E7D623AB8B2B00916D5B /* Day19Input */; };
 		045B0082239FAFEA001D4C03 /* Day10VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B0081239FAFEA001D4C03 /* Day10VC.swift */; };
 		045B0084239FB033001D4C03 /* Day10Input in Resources */ = {isa = PBXBuildFile; fileRef = 045B0083239FB033001D4C03 /* Day10Input */; };
 		04666DC9239858C7002B408C /* Day05Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 04666DC8239858C7002B408C /* Day05Input_2018 */; };
@@ -41,6 +45,8 @@
 		0470DA762394516F00DDAFCB /* Day03VC_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470DA752394516F00DDAFCB /* Day03VC_2018.swift */; };
 		0470DA78239455A800DDAFCB /* Day03Input_2018 in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA77239455A800DDAFCB /* Day03Input_2018 */; };
 		0470DA7D2394D6FC00DDAFCB /* Day02Input in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA7C2394D6FC00DDAFCB /* Day02Input */; };
+		048534F123AE837B005387AE /* Day20VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048534F023AE837B005387AE /* Day20VC.swift */; };
+		048534F323AE83BB005387AE /* Day20Input in Resources */ = {isa = PBXBuildFile; fileRef = 048534F223AE83BB005387AE /* Day20Input */; };
 		049234E623A16B6900697D9D /* IntImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049234E523A16B6900697D9D /* IntImage.swift */; };
 		0496B4A423A0DF9700501D2F /* Day11VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496B4A323A0DF9700501D2F /* Day11VC.swift */; };
 		0496B4A623A0E34000501D2F /* Day11Input in Resources */ = {isa = PBXBuildFile; fileRef = 0496B4A523A0E34000501D2F /* Day11Input */; };
@@ -74,6 +80,10 @@
 /* Begin PBXFileReference section */
 		0410E7C523A7FABF00916D5B /* Day16VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day16VC.swift; sourceTree = "<group>"; };
 		0410E7C723A7FAC800916D5B /* Day16Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day16Input; sourceTree = "<group>"; };
+		0410E7CA23A9484400916D5B /* Day17VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day17VC.swift; sourceTree = "<group>"; };
+		0410E7CC23A9484F00916D5B /* Day17Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day17Input; sourceTree = "<group>"; };
+		0410E7D423AB8B0B00916D5B /* Day19VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day19VC.swift; sourceTree = "<group>"; };
+		0410E7D623AB8B2B00916D5B /* Day19Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day19Input; sourceTree = "<group>"; };
 		045B0081239FAFEA001D4C03 /* Day10VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day10VC.swift; sourceTree = "<group>"; };
 		045B0083239FB033001D4C03 /* Day10Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day10Input; sourceTree = "<group>"; };
 		04666DC8239858C7002B408C /* Day05Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day05Input_2018; sourceTree = "<group>"; };
@@ -108,6 +118,8 @@
 		0470DA752394516F00DDAFCB /* Day03VC_2018.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03VC_2018.swift; sourceTree = "<group>"; };
 		0470DA77239455A800DDAFCB /* Day03Input_2018 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day03Input_2018; sourceTree = "<group>"; };
 		0470DA7C2394D6FC00DDAFCB /* Day02Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day02Input; sourceTree = "<group>"; };
+		048534F023AE837B005387AE /* Day20VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day20VC.swift; sourceTree = "<group>"; };
+		048534F223AE83BB005387AE /* Day20Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day20Input; sourceTree = "<group>"; };
 		049234E523A16B6900697D9D /* IntImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntImage.swift; sourceTree = "<group>"; };
 		0496B4A323A0DF9700501D2F /* Day11VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day11VC.swift; sourceTree = "<group>"; };
 		0496B4A523A0E34000501D2F /* Day11Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day11Input; sourceTree = "<group>"; };
@@ -156,6 +168,24 @@
 				0410E7C723A7FAC800916D5B /* Day16Input */,
 			);
 			path = Day16;
+			sourceTree = "<group>";
+		};
+		0410E7C923A9482E00916D5B /* Day17 */ = {
+			isa = PBXGroup;
+			children = (
+				0410E7CA23A9484400916D5B /* Day17VC.swift */,
+				0410E7CC23A9484F00916D5B /* Day17Input */,
+			);
+			path = Day17;
+			sourceTree = "<group>";
+		};
+		0410E7D323AB8AFD00916D5B /* Day19 */ = {
+			isa = PBXGroup;
+			children = (
+				0410E7D423AB8B0B00916D5B /* Day19VC.swift */,
+				0410E7D623AB8B2B00916D5B /* Day19Input */,
+			);
+			path = Day19;
 			sourceTree = "<group>";
 		};
 		045B0080239FAFD9001D4C03 /* Day10 */ = {
@@ -239,6 +269,9 @@
 				047095E323A5005200D1E9EC /* Day14 */,
 				04BB05AE23A66D180080DFC1 /* Day15 */,
 				0403AC4A23A7FA9900BF7881 /* Day16 */,
+				0410E7C923A9482E00916D5B /* Day17 */,
+				0410E7D323AB8AFD00916D5B /* Day19 */,
+				048534EF23AE836D005387AE /* Day20 */,
 				0470DA522392DD0000DDAFCB /* Helpers */,
 				0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */,
 				0470DA402392DC6400DDAFCB /* SceneDelegate.swift */,
@@ -327,6 +360,15 @@
 				0470DA77239455A800DDAFCB /* Day03Input_2018 */,
 			);
 			path = Day03;
+			sourceTree = "<group>";
+		};
+		048534EF23AE836D005387AE /* Day20 */ = {
+			isa = PBXGroup;
+			children = (
+				048534F023AE837B005387AE /* Day20VC.swift */,
+				048534F223AE83BB005387AE /* Day20Input */,
+			);
+			path = Day20;
 			sourceTree = "<group>";
 		};
 		0496B4A223A0DF8800501D2F /* Day11 */ = {
@@ -491,6 +533,7 @@
 				04D5E92A239E2CBC002BCD3B /* Day09Input in Resources */,
 				04D5E920239D33F9002BCD3B /* Day08Input in Resources */,
 				04666DCE2398C483002B408C /* Day05Input in Resources */,
+				0410E7CD23A9484F00916D5B /* Day17Input in Resources */,
 				045B0084239FB033001D4C03 /* Day10Input in Resources */,
 				04CDAB0E2396FA55006CB388 /* Day04Input_2018 in Resources */,
 				04666DD82399B535002B408C /* Day06Input in Resources */,
@@ -498,11 +541,13 @@
 				04BB05B223A670FF0080DFC1 /* Day15Input in Resources */,
 				04666DC9239858C7002B408C /* Day05Input_2018 in Resources */,
 				0470DA482392DC6500DDAFCB /* Assets.xcassets in Resources */,
+				048534F323AE83BB005387AE /* Day20Input in Resources */,
 				04CDAB05239622BF006CB388 /* Day03Input in Resources */,
 				0470DA7D2394D6FC00DDAFCB /* Day02Input in Resources */,
 				0470DA462392DC6400DDAFCB /* Main.storyboard in Resources */,
 				0470DA6D2394461800DDAFCB /* Day1Input_2018 in Resources */,
 				0470DA78239455A800DDAFCB /* Day03Input_2018 in Resources */,
+				0410E7D723AB8B2B00916D5B /* Day19Input in Resources */,
 				047095E723A5008A00D1E9EC /* Day14Input in Resources */,
 				0470DA7323944C9500DDAFCB /* Day2Input_2018 in Resources */,
 				049925D423A2FD0D004C840F /* Day06Input_2018 in Resources */,
@@ -532,16 +577,19 @@
 				0470DA712394495300DDAFCB /* Day02VC_2018.swift in Sources */,
 				049899AC23A19F85004CF0FB /* Direction.swift in Sources */,
 				0470DA432392DC6400DDAFCB /* Overview2019ViewController.swift in Sources */,
+				0410E7CB23A9484400916D5B /* Day17VC.swift in Sources */,
 				0470DA572392E0CB00DDAFCB /* Day01VC.swift in Sources */,
 				04CDAB072396DE9E006CB388 /* IntPoint.swift in Sources */,
 				0470DA3F2392DC6400DDAFCB /* AppDelegate.swift in Sources */,
 				04B93333239C859400B543A7 /* Misc.swift in Sources */,
+				0410E7D523AB8B0B00916D5B /* Day19VC.swift in Sources */,
 				0470DA412392DC6400DDAFCB /* SceneDelegate.swift in Sources */,
 				04BB05B023A66D2E0080DFC1 /* Day15VC.swift in Sources */,
 				0470DA6B23943D0700DDAFCB /* Day01VC_2018.swift in Sources */,
 				04CDAB11239712C9006CB388 /* Day04VC.swift in Sources */,
 				04D5E928239E2CB1002BCD3B /* Day09VC.swift in Sources */,
 				04CDAB18239853E3006CB388 /* Day05VC_2018.swift in Sources */,
+				048534F123AE837B005387AE /* Day20VC.swift in Sources */,
 				04666DD62399B4F3002B408C /* Day06VC.swift in Sources */,
 				04CDAB092396DF5E006CB388 /* IntMachine.swift in Sources */,
 				04CDAB152398538B006CB388 /* String+Ext.swift in Sources */,

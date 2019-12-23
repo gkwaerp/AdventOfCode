@@ -22,7 +22,7 @@ class Day15VC: AoCVC, AdventDay {
             case oxygen
         }
         
-        var map = [IntPoint: MapTile]() // Coordinate --> Tile
+        var mazeMap = [IntPoint: MapTile]() // Coordinate --> Tile
         
         let brain = IntMachine()
         var currentPosition = IntPoint.origin
@@ -36,7 +36,7 @@ class Day15VC: AoCVC, AdventDay {
         }
         
         func run() {
-            self.map[self.currentPosition] = .empty
+            self.mazeMap[self.currentPosition] = .empty
             self.addSurrondingsToPotentials()
             var isHalted = false
             while !isHalted {
@@ -65,13 +65,13 @@ class Day15VC: AoCVC, AdventDay {
             switch droidStatus {
             case .moved, .foundOxygen:
                 self.currentPosition = self.attemptedPosition
-                if self.map[self.attemptedPosition] == nil {
-                    self.map[self.attemptedPosition] = (droidStatus == .moved) ? .empty : .oxygen
+                if self.mazeMap[self.attemptedPosition] == nil {
+                    self.mazeMap[self.attemptedPosition] = (droidStatus == .moved) ? .empty : .oxygen
                     self.backtrackHistory.append(self.attemptedDirection)
                     self.addSurrondingsToPotentials()
                 }
             case .hitWall:
-                self.map[self.attemptedPosition] = .wall
+                self.mazeMap[self.attemptedPosition] = .wall
             }
         }
         
@@ -92,7 +92,7 @@ class Day15VC: AoCVC, AdventDay {
         }
         
         func drawMap() {
-            let gridInfo = IntPoint.gridInfo(from: self.map.keys)
+            let gridInfo = IntPoint.gridInfo(from: self.mazeMap.keys)
             let allPoints = IntPoint.gridPoints(x: gridInfo.width, y: gridInfo.height)
             var prevY: Int? = nil
             var mapString = "------------------------------------------------------\n"
@@ -108,7 +108,7 @@ class Day15VC: AoCVC, AdventDay {
                 } else if actualPoint == self.currentPosition {
                     mapString.append("D")
                 } else {
-                    if let mapTile = self.map[actualPoint] {
+                    if let mapTile = self.mazeMap[actualPoint] {
                         switch mapTile {
                         case .empty: mapString.append(".")
                         case .oxygen: mapString.append("O")
@@ -126,7 +126,7 @@ class Day15VC: AoCVC, AdventDay {
         func addSurrondingsToPotentials() {
             for direction in Direction.allCases {
                 let newPos = self.currentPosition + direction.movementVector
-                if self.map[newPos] == nil {
+                if self.mazeMap[newPos] == nil {
                     self.potentialLocations.insert(newPos)
                 }
             }
@@ -147,23 +147,40 @@ class Day15VC: AoCVC, AdventDay {
         self.repairDroid.run()
         
         // Backwards, since part 2 wants to find longest from oxygen to anywhere.
-        let start = self.repairDroid.map.first(where: {$0.value == .oxygen})!.key
+        let start = self.repairDroid.mazeMap.first(where: {$0.value == .oxygen})!.key
         let end = IntPoint.origin
-        let map = self.repairDroid.map.mapValues { (mapTile) -> Bool in
-            switch mapTile {
-            case .wall: return false
-            default: return true
+        var nodes = Set<AStarNode>()
+        for (point, tile) in self.repairDroid.mazeMap {
+            switch tile {
+            case .wall: break
+            default: nodes.insert(AStarNode(position: point))
             }
         }
         
-        self.aStar.computeShortestPaths(start: start, end: end, traversalMap: map)
+        for node in nodes {
+            for direction in Direction.allCases {
+                let newPosition = node.position + direction.movementVector
+                if let newTile = self.repairDroid.mazeMap.first(where: {$0.key == newPosition}) {
+                    switch newTile.value {
+                    case .wall: break
+                    default:
+                        let newNode = nodes.first(where: {$0.position == newPosition})!
+                        node.edges.insert(AStarEdge(from: node, to: newNode, cost: 1))
+                    }
+                }
+            }
+        }
+        
+        let startNode = nodes.first(where: {$0.position == start})!
+        
+        self.aStar.computeShortestPaths(startNode: startNode)
         let node = self.aStar.closed.first(where: {$0.position == end})!
         
-        self.setSolution1("\(node.g!)")
+        self.setSolution1("\(node.g)")
     }
     
     func solveSecond() {
-        let maxPathLength = self.aStar.closed.max(by: {$0.g! < $1.g!})!.g!
+        let maxPathLength = self.aStar.closed.max(by: {$0.g < $1.g})!.g
         self.setSolution2("\(maxPathLength)")
     }
 }

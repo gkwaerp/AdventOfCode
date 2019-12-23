@@ -8,7 +8,53 @@
 
 import Foundation
 
-class AStarNode: Node, Hashable, Equatable {
+class AStarEdge {
+    var fromNode: AStarNode
+    var toNode: AStarNode
+    var cost: Int
+    
+    init(from: AStarNode, to: AStarNode, cost: Int) {
+        self.fromNode = from
+        self.toNode = to
+        self.cost = cost
+    }
+}
+
+extension AStarEdge: Hashable, Equatable {
+    static func == (lhs: AStarEdge, rhs: AStarEdge) -> Bool {
+        return lhs.fromNode == rhs.fromNode &&
+            lhs.toNode == rhs.toNode &&
+            lhs.cost == rhs.cost
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.fromNode)
+        hasher.combine(self.toNode)
+        hasher.combine(self.cost)
+    }
+}
+
+class AStarNode {
+    var position: IntPoint
+    var parent: AStarNode?
+    var edges: Set<AStarEdge>
+    
+    var f: Int {
+        return self.g + self.h
+    }
+    var g: Int
+    var h: Int
+    
+    init(position: IntPoint, edges: Set<AStarEdge> = []) {
+        self.position = position
+        self.parent = nil
+        self.edges = edges
+        self.g = 0
+        self.h = 0
+    }
+}
+
+extension AStarNode: Hashable, Equatable {
     static func == (lhs: AStarNode, rhs: AStarNode) -> Bool {
         return lhs.position == rhs.position
     }
@@ -16,60 +62,63 @@ class AStarNode: Node, Hashable, Equatable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.position)
     }
-    
-    var position: IntPoint
-    var parent: Node?
-    var children: [Node] = []
-    var f: Int {
-        return self.g + self.h
-    }
-    var g: Int!
-    var h: Int!
-    
-    init(position: IntPoint) {
-        self.position = position
-        self.parent = nil
-    }
 }
 
 class IntAStar {
     var open = Set<AStarNode>()
     var closed = Set<AStarNode>()
     
-    // Traversal map: Position --> Walkable.
-    func computeShortestPaths(start: IntPoint, end: IntPoint, traversalMap: [IntPoint: Bool]) {
-        let startNode = AStarNode(position: start)
+    // Returns whether path to end was found (only valid if end exists).
+    // TraversalMap = All permissable locations.
+    @discardableResult
+    func computeShortestPaths(startNode: AStarNode, end: AStarNode? = nil) -> [IntPoint]? {
+        self.open.removeAll(keepingCapacity: true)
+        self.closed.removeAll(keepingCapacity: true)
+
+        
         startNode.g = 0
         startNode.h = 0
         
         self.open.insert(startNode)
         
-        while !self.open.isEmpty
-        {
+        while !self.open.isEmpty {
             let current = self.open.min(by: {$0.f < $1.f})!
             self.open.remove(current)
             self.closed.insert(current)
             
-            for direction in Direction.allCases {
-                let potentialPos = current.position + direction.movementVector
-                let wrapped = AStarNode(position: potentialPos)
+            if let end = end {
+                if end.position == current.position {
+                    var currentPathNode: AStarNode? = current
+                    var path = [current.position]
+                    while currentPathNode != nil {
+                        path.insert(currentPathNode!.position, at: 0)
+                        currentPathNode = currentPathNode?.parent
+                    }
+                    return path
+                }
+            }
+            
+            for edge in current.edges {
+                let potentialNode = edge.toNode
+                guard !self.closed.contains(potentialNode) else { continue }
+                potentialNode.g = current.g + edge.cost
+                if let end = end {
+                    potentialNode.h = potentialNode.position.manhattanDistance(to: end.position)
+                } else {
+                    potentialNode.h = 0
+                }
+                potentialNode.parent = current
                 
-                guard traversalMap[potentialPos] != nil else { fatalError() }
-                guard traversalMap[potentialPos] == true else { continue }
-                guard !self.closed.contains(wrapped) else { continue }
-                wrapped.g = current.g + 1
-                wrapped.h = potentialPos.manhattanDistance(to: end)
-                wrapped.parent = current
-                
-                if let existingNode = self.open.first(where: {$0.position == potentialPos}) {
-                    if wrapped.g < existingNode.g {
-                        existingNode.g = wrapped.g
+                if let existingNode = self.open.first(where: {$0.position == potentialNode.position}) {
+                    if potentialNode.g < existingNode.g {
+                        existingNode.g = potentialNode.g
                         existingNode.parent = current
                     }
                 } else {
-                    self.open.insert(wrapped)
+                    self.open.insert(potentialNode)
                 }
             }
         }
+        return nil
     }
 }
