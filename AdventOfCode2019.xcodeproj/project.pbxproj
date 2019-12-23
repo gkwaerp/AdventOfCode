@@ -47,6 +47,8 @@
 		0470DA7D2394D6FC00DDAFCB /* Day02Input in Resources */ = {isa = PBXBuildFile; fileRef = 0470DA7C2394D6FC00DDAFCB /* Day02Input */; };
 		048534F123AE837B005387AE /* Day20VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048534F023AE837B005387AE /* Day20VC.swift */; };
 		048534F323AE83BB005387AE /* Day20Input in Resources */ = {isa = PBXBuildFile; fileRef = 048534F223AE83BB005387AE /* Day20Input */; };
+		048534F623B14EA0005387AE /* Day22VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048534F523B14EA0005387AE /* Day22VC.swift */; };
+		048534F823B1599F005387AE /* Day22Input in Resources */ = {isa = PBXBuildFile; fileRef = 048534F723B1599F005387AE /* Day22Input */; };
 		049234E623A16B6900697D9D /* IntImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049234E523A16B6900697D9D /* IntImage.swift */; };
 		0496B4A423A0DF9700501D2F /* Day11VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496B4A323A0DF9700501D2F /* Day11VC.swift */; };
 		0496B4A623A0E34000501D2F /* Day11Input in Resources */ = {isa = PBXBuildFile; fileRef = 0496B4A523A0E34000501D2F /* Day11Input */; };
@@ -120,6 +122,8 @@
 		0470DA7C2394D6FC00DDAFCB /* Day02Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day02Input; sourceTree = "<group>"; };
 		048534F023AE837B005387AE /* Day20VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day20VC.swift; sourceTree = "<group>"; };
 		048534F223AE83BB005387AE /* Day20Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day20Input; sourceTree = "<group>"; };
+		048534F523B14EA0005387AE /* Day22VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day22VC.swift; sourceTree = "<group>"; };
+		048534F723B1599F005387AE /* Day22Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day22Input; sourceTree = "<group>"; };
 		049234E523A16B6900697D9D /* IntImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntImage.swift; sourceTree = "<group>"; };
 		0496B4A323A0DF9700501D2F /* Day11VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day11VC.swift; sourceTree = "<group>"; };
 		0496B4A523A0E34000501D2F /* Day11Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day11Input; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 				0410E7C923A9482E00916D5B /* Day17 */,
 				0410E7D323AB8AFD00916D5B /* Day19 */,
 				048534EF23AE836D005387AE /* Day20 */,
+				048534F423B14E49005387AE /* Day22 */,
 				0470DA522392DD0000DDAFCB /* Helpers */,
 				0470DA3E2392DC6400DDAFCB /* AppDelegate.swift */,
 				0470DA402392DC6400DDAFCB /* SceneDelegate.swift */,
@@ -369,6 +374,15 @@
 				048534F223AE83BB005387AE /* Day20Input */,
 			);
 			path = Day20;
+			sourceTree = "<group>";
+		};
+		048534F423B14E49005387AE /* Day22 */ = {
+			isa = PBXGroup;
+			children = (
+				048534F523B14EA0005387AE /* Day22VC.swift */,
+				048534F723B1599F005387AE /* Day22Input */,
+			);
+			path = Day22;
 			sourceTree = "<group>";
 		};
 		0496B4A223A0DF8800501D2F /* Day11 */ = {
@@ -531,6 +545,7 @@
 				0470DA4B2392DC6500DDAFCB /* LaunchScreen.storyboard in Resources */,
 				047095E223A3F1C100D1E9EC /* Day13Input in Resources */,
 				04D5E92A239E2CBC002BCD3B /* Day09Input in Resources */,
+				048534F823B1599F005387AE /* Day22Input in Resources */,
 				04D5E920239D33F9002BCD3B /* Day08Input in Resources */,
 				04666DCE2398C483002B408C /* Day05Input in Resources */,
 				0410E7CD23A9484F00916D5B /* Day17Input in Resources */,
@@ -573,6 +588,7 @@
 				0410E7C623A7FABF00916D5B /* Day16VC.swift in Sources */,
 				045B0082239FAFEA001D4C03 /* Day10VC.swift in Sources */,
 				0470DA662393E30900DDAFCB /* Day02VC.swift in Sources */,
+				048534F623B14EA0005387AE /* Day22VC.swift in Sources */,
 				0496B4A423A0DF9700501D2F /* Day11VC.swift in Sources */,
 				0470DA712394495300DDAFCB /* Day02VC_2018.swift in Sources */,
 				049899AC23A19F85004CF0FB /* Direction.swift in Sources */,
