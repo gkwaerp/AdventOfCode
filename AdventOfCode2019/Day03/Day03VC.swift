@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day03VC: AoCVC, AdventDay {
+class Day03VC: AoCVC, AdventDay, InputLoadable {
     private struct WirePath {
         private var dictionary = [IntPoint: Int]()
         private var points = Set<IntPoint>()
@@ -49,19 +49,19 @@ class Day03VC: AoCVC, AdventDay {
     private var intersections = Set<IntPoint>()
     
     func loadInput() {
-        self.wirePaths = FileLoader.loadText(fileName: "Day03Input").map({WirePath(string: $0)})
+        self.wirePaths = "Day03Input".loadAsTextStringArray().map({WirePath(string: $0)})
         self.intersections = self.wirePaths[0].intersections(with: self.wirePaths[1])
     }
     
     func solveFirst() {
         let closest = self.intersections.map({$0.manhattanDistance(to: .origin)}).min()!
-        self.setSolution1("\(closest)")
+        self.setSolution(challenge: 0, text: "\(closest)")
     }
     
     func solveSecond() {
         let totalSteps = self.intersections.map { (intersection) in
             self.wirePaths.map({$0.stepsToIntersection(point: intersection)}).reduce(0, +)
         }.min()!
-        self.setSolution2("\(totalSteps)")
+        self.setSolution(challenge: 1, text: "\(totalSteps)")
     }
 }

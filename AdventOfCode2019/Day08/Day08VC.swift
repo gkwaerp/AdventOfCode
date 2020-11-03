@@ -8,12 +8,12 @@
 
 import UIKit
 
-class Day08VC: AoCVC, AdventDay {
+class Day08VC: AoCVC, AdventDay, InputLoadable {
     
     private var spaceImage: IntImage!
     
     func loadInput() {
-        let line = FileLoader.loadText(fileName: "Day08Input").first!
+        let line = "Day08Input".loadAsTextStringArray().first!
         let ints = line.map({ Int("\($0)")! })
         self.spaceImage = IntImage(width: 25, height: 6, data: ints)
     }
@@ -22,12 +22,12 @@ class Day08VC: AoCVC, AdventDay {
         let layerIndex = self.spaceImage.getLayerIndexWithFewestMatching(color: .black)
         let num1 = self.spaceImage.getNumMatchingPixelsInLayer(layerIndex: layerIndex, color: .white)
         let num2 = self.spaceImage.getNumMatchingPixelsInLayer(layerIndex: layerIndex, color: .transparent)
-        self.setSolution1("\(num1 * num2)")
+        self.setSolution(challenge: 0, text: "\(num1 * num2)")
     }
     
     func solveSecond() {
         let rasterized = self.spaceImage.rasterized
         let imageText = "\n\(rasterized.asText())"
-        self.setSolution2(imageText)
+        self.setSolution(challenge: 1, text: imageText)
     }
 }

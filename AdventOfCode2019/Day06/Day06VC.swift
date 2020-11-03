@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day06VC: AoCVC, AdventDay {
+class Day06VC: AoCVC, AdventDay, InputLoadable {
     class StarNode: Node, Equatable, Hashable {
         let id: String
         let orbitsId: String?
@@ -63,7 +63,7 @@ class Day06VC: AoCVC, AdventDay {
     private var orbits = [StarNode]()
     private var starMap = StarMap()
     func loadInput() {
-        let lines = FileLoader.loadText(fileName: "Day06Input")
+        let lines = "Day06Input".loadAsTextStringArray()
         self.orbits = lines.map({StarNode.from(string: $0)})
         self.orbits.append(StarNode(id: "COM", orbitsID: nil))
         self.starMap.populate(from: self.orbits)
@@ -71,11 +71,11 @@ class Day06VC: AoCVC, AdventDay {
     
     func solveFirst() {
         let result = self.starMap.calcChecksum(orbits: self.orbits)
-        self.setSolution1("\(result)")
+        self.setSolution(challenge: 0, text: "\(result)")
     }
     
     func solveSecond() {
         let result = self.starMap.calcMinimum(nodes: self.orbits)
-        self.setSolution2("\(result)")
+        self.setSolution(challenge: 1, text: "\(result)")
     }
 }

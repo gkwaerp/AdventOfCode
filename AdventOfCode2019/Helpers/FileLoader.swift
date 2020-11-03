@@ -22,8 +22,8 @@ class FileLoader {
         let data = getData(for: fileName, fileType: fileType)
         return try! JSONDecoder().decode(T.self, from: data)
     }
-
-    static func loadText(fileName: String, fileType: String? = nil) -> [String] {
-        return try! String(contentsOf: getURL(for: fileName, fileType: fileType), encoding: .utf8).components(separatedBy: "\n").filter({!$0.isEmpty})
+    
+    static func loadText(fileName: String, fileType: String? = nil) -> String {
+        return try! String(contentsOf: getURL(for: fileName, fileType: fileType), encoding: .utf8)
     }
 }

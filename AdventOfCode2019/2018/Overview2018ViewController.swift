@@ -11,8 +11,17 @@ import UIKit
 class Overview2018ViewController: UIViewController {
     private let mainStackView = UIStackView()
     private var subStackViews = [UIStackView]()
+    
+    private let verticalSpacing: CGFloat = 4
+    private let horizontalSpacing: CGFloat = 16
 
-    private let enabledDays = Set([1, 2, 3, 4, 5, 6])
+    //Days start at 1, not 0.
+    private var calendarDays: [Int: AoCVC.Type] = [1 : Day01VC_2018.self,
+                                                   2 : Day02VC_2018.self,
+                                                   3 : Day03VC_2018.self,
+                                                   4 : Day04VC_2018.self,
+                                                   5 : Day05VC_2018.self,
+                                                   6 : Day06VC_2018.self]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +38,18 @@ class Overview2018ViewController: UIViewController {
         self.mainStackView.distribution = .fillEqually
         self.mainStackView.alignment = .center
         self.mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.mainStackView.spacing = self.horizontalSpacing
         self.view.addSubview(self.mainStackView)
         
-        self.mainStackView.constrainToSuperView()
+        NSLayoutConstraint.activate([self.mainStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                                     self.mainStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)])
         
         for _ in 0..<4 {
             let subStackView = UIStackView()
             subStackView.axis = .vertical
             subStackView.distribution = .fillEqually
             subStackView.alignment = .center
+            subStackView.spacing = self.verticalSpacing
             self.mainStackView.addArrangedSubview(subStackView)
             self.subStackViews.append(subStackView)
         }
@@ -46,33 +58,33 @@ class Overview2018ViewController: UIViewController {
     private func configureButtons() {
         for i in 0..<24 {
             let day = i + 1
-            let button = UIButton(type: .system)
-            button.setTitle("Day \(day)", for: .normal)
-            button.tag = day
-            button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-            button.isEnabled = self.enabledDays.contains(day)
             let stackViewIndex = i % 4
-            self.subStackViews[stackViewIndex].addArrangedSubview(button)
-        }
-    }
-    
-    @objc func buttonTapped(sender: UIButton) {
-        var vc: UIViewController? = nil
-        switch sender.tag {
-        case 1: vc = Day01VC_2018()
-        case 2: vc = Day02VC_2018()
-        case 3: vc = Day03VC_2018()
-        case 4: vc = Day04VC_2018()
-        case 5: vc = Day05VC_2018()
-        case 6: vc = Day06VC_2018()
-        default: break
+            self.subStackViews[stackViewIndex].addArrangedSubview(self.makeAdventDayButton(day: day))
         }
         
-        if let vc = vc {
-            vc.modalPresentationStyle = .overFullScreen
-            vc.title = String(format: "Day %02d", sender.tag)
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        let sillyButton = self.makeAdventDayButton(day: 25)
+        self.view.addSubview(sillyButton)
+        NSLayoutConstraint.activate([sillyButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                                     sillyButton.topAnchor.constraint(equalTo: self.mainStackView.bottomAnchor, constant: self.verticalSpacing)])
+    }
+    
+    private func makeAdventDayButton(day: Int) -> UIButton {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let dayString = String(format: "%02d", day)
+        button.setTitle("Day \(dayString)", for: .normal)
+        button.tag = day
+        button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+        button.isEnabled = (self.calendarDays[day] != nil)
+        return button
+    }
+    
+    @objc private func buttonTapped(sender: UIButton) {
+        guard let vcType = self.calendarDays[sender.tag] else { fatalError("Invalid VC.") }
+        let vc = vcType.init()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.title = String(format: "Day %02d", sender.tag)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

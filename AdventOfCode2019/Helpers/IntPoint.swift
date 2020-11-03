@@ -104,29 +104,38 @@ class IntPoint: Equatable, Hashable, CustomStringConvertible {
             maxExtents.y = max(maxExtents.y, intPoint.y)
         }
 
-        let size = maxExtents - minExtents
-        return GridInfo(minExtents: minExtents, maxExtents: maxExtents, width: size.x + 1, height: size.y + 1)
+        return GridInfo(minExtents: minExtents, maxExtents: maxExtents)
     }
-
-    static func gridPoints(x: Int, y: Int) -> [IntPoint] {
+    
+    lazy var gridPoints: [IntPoint] = {
         var allPoints = [IntPoint]()
-        for yPos in 0..<y {
-            for xPos in 0..<x {
+        for yPos in 0..<self.y {
+            for xPos in 0..<self.x {
                 allPoints.append(IntPoint(x: xPos, y: yPos))
             }
         }
         return allPoints
-    }
+    }()
 }
-
 
 struct GridInfo {
     let minExtents: IntPoint
     let maxExtents: IntPoint
-    let width: Int
-    let height: Int
+    
+    var width: Int {
+        return self.maxExtents.x - self.minExtents.x + 1
+    }
+    
+    var height: Int {
+        return self.maxExtents.y - self.minExtents.y + 1
+    }
 
     static var zero: GridInfo {
-        return GridInfo(minExtents: .origin, maxExtents: .origin, width: 0, height: 0)
+        return GridInfo(minExtents: .origin, maxExtents: .origin)
+    }
+
+    var allPoints: [IntPoint] {
+        let rawPoints = IntPoint(x: self.width, y: self.height).gridPoints
+        return rawPoints.map({minExtents + $0})
     }
 }

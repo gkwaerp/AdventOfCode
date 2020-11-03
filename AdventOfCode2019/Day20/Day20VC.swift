@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day20VC: AoCVC, AdventDay {
+class Day20VC: AoCVC, AdventDay, InputLoadable {
     enum MazeTile {
         case empty
         case wall
@@ -23,7 +23,7 @@ class Day20VC: AoCVC, AdventDay {
     
     
     func loadInput() {
-        let lines = FileLoader.loadText(fileName: "Day20Input")
+        let lines = "Day20Input".loadAsTextStringArray()
         
         var y = 0
         for line in lines {
@@ -50,15 +50,12 @@ class Day20VC: AoCVC, AdventDay {
     
     func parseMaze() {
         let gridInfo = IntPoint.gridInfo(from: self.mazeMap.keys)
-        let gridPoints = IntPoint.gridPoints(x: gridInfo.width, y: gridInfo.height)
-        for rawPoint in gridPoints {
-            let actualPoint = rawPoint + gridInfo.minExtents
-            
-            if let id = self.getIdForPosition(actualPoint) {
+        for point in gridInfo.allPoints {
+            if let id = self.getIdForPosition(point) {
                 for direction in [Direction.east, Direction.south] {
-                    if let otherId = self.getIdForPosition(actualPoint + direction.movementVector) {
-                        let posBeyond = actualPoint + direction.movementVector.scaled(by: 2)
-                        let posBefore = actualPoint + direction.movementVector.scaled(by: -1)
+                    if let otherId = self.getIdForPosition(point + direction.movementVector) {
+                        let posBeyond = point + direction.movementVector.scaled(by: 2)
+                        let posBefore = point + direction.movementVector.scaled(by: -1)
                         if let beyondTile = self.mazeMap[posBeyond] {
                             switch beyondTile {
                             case .empty:
@@ -153,7 +150,7 @@ class Day20VC: AoCVC, AdventDay {
         let endNode = nodes.first(where: {$0.position == self.endPosition})!
         
         aStar.computeShortestPaths(startNode: startNode)
-        self.setSolution1("\(endNode.g)")
+        self.setSolution(challenge: 0, text: "\(endNode.g)")
     }
     
     func solveSecond() {

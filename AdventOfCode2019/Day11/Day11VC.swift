@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day11VC: AoCVC, AdventDay {
+class Day11VC: AoCVC, AdventDay, InputLoadable {
     class PaintRobot {
         private enum State {
             case painting
@@ -82,10 +82,9 @@ class Day11VC: AoCVC, AdventDay {
         func print() -> String {
             let gridInfo = IntPoint.gridInfo(from: self.surface.keys)
             
-            let allGridPoints = IntPoint.gridPoints(x: gridInfo.width, y: gridInfo.height)
-            let pixels = allGridPoints.map { (rawPoint) -> Color in
-                let actualPoint = rawPoint + gridInfo.minExtents
-                return getColor(at: actualPoint)
+            let allGridPoints = gridInfo.allPoints
+            let pixels = allGridPoints.map { (point) -> Color in
+                return getColor(at: point)
             }
             
             let image = IntImage(width: gridInfo.width, height: gridInfo.height, pixels: pixels)
@@ -96,14 +95,14 @@ class Day11VC: AoCVC, AdventDay {
     private var robot: PaintRobot!
     
     func loadInput() {
-        let line = FileLoader.loadText(fileName: "Day11Input").first!
+        let line = "Day11Input".loadAsTextStringArray().first!
         let ints = line.components(separatedBy: ",").compactMap({Int($0)})
         self.robot = PaintRobot(program: ints)
     }
     
     func solveFirst() {
         self.robot.run()
-        self.setSolution1("\(self.robot.surface.count)")
+        self.setSolution(challenge: 0, text: "\(self.robot.surface.count)")
     }
     
     func solveSecond() {
@@ -111,6 +110,6 @@ class Day11VC: AoCVC, AdventDay {
         self.robot.setColor(.white, at: .origin)
         self.robot.run()
         
-        self.setSolution2(self.robot.print())
+        self.setSolution(challenge: 1, text: self.robot.print())
     }
 }

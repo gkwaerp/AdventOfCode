@@ -8,12 +8,12 @@
 
 import UIKit
 
-class Day16VC: AoCVC, AdventDay {
+class Day16VC: AoCVC, AdventDay, InputLoadable {
     var rawInput = [Int]()
     var messageOffset: Int!
     
     func loadInput() {
-        let input = FileLoader.loadText(fileName: "Day16Input").first!
+        let input = "Day16Input".loadAsTextStringArray().first!
         self.messageOffset = Int(input.prefix(7))!
         self.rawInput = input.map({Int("\($0)")!})
     }
@@ -51,7 +51,7 @@ class Day16VC: AoCVC, AdventDay {
         for i in 0..<8 {
             finalString.append("\(currentInput[i + messageOffset])")
         }
-        self.setSolution1("\(finalString)")
+        self.setSolution(challenge: 0, text: "\(finalString)")
     }
     
     func solveSecond() {
@@ -78,6 +78,6 @@ class Day16VC: AoCVC, AdventDay {
         for i in 0..<8 {
             finalString.append("\(currentInput[i + messageOffset])")
         }
-        self.setSolution2("\(finalString)")
+        self.setSolution(challenge: 1, text: "\(finalString)")
     }
 }

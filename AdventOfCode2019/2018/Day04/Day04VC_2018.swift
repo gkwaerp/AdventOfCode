@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day04VC_2018: AoCVC, AdventDay {
+class Day04VC_2018: AoCVC, AdventDay, InputLoadable {
     private enum GuardEventType {
         case shiftBegins(guardId: Int)
         case fallsAsleep
@@ -187,7 +187,7 @@ class Day04VC_2018: AoCVC, AdventDay {
     private var spyLog = SpyLog()
     
     func loadInput() {
-        self.spyLog.populate(from: FileLoader.loadText(fileName: "Day04Input_2018"))
+        self.spyLog.populate(from: "Day04Input_2018".loadAsTextStringArray())
         self.spyLog.parse()
     }
     
@@ -195,12 +195,12 @@ class Day04VC_2018: AoCVC, AdventDay {
         let sleepyId = self.spyLog.getMostSleepyGuard()
         let bestSleepMinute = self.spyLog.getBestSleepInfo(for: sleepyId).bestMinute
         let solution = sleepyId * bestSleepMinute
-        self.setSolution1("\(solution)")
+        self.setSolution(challenge: 0, text: "\(solution)")
     }
     
     func solveSecond() {
         let sleepInfo = self.spyLog.getMostSleptMinuteInfo()
         let solution = sleepInfo.guardId * sleepInfo.sleptMinute
-        self.setSolution2("\(solution)")
+        self.setSolution(challenge: 1, text: "\(solution)")
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day14VC: AoCVC, AdventDay {
+class Day14VC: AoCVC, AdventDay, InputLoadable {
     private class ChemicalStorage {
         var chemicals = [String: Int]() // Chemicals --> quantity stored
 
@@ -105,14 +105,14 @@ class Day14VC: AoCVC, AdventDay {
     private var chemicalFactory = ChemicalFactory()
     
     func loadInput() {
-        let lines = FileLoader.loadText(fileName: "Day14Input")
+        let lines = "Day14Input".loadAsTextStringArray()
         let recipes = lines.map({ReactionRecipe.from(string: $0)})
         self.chemicalFactory.recipes = recipes
     }
     
     func solveFirst() {
         self.chemicalFactory.generateChemical(chemical: "FUEL", quantity: 1)
-        self.setSolution1("\(self.chemicalFactory.consumedChemicals["ORE"]!)")
+        self.setSolution(challenge: 0, text: "\(self.chemicalFactory.consumedChemicals["ORE"]!)")
     }
     
     func solveSecond() {
@@ -132,6 +132,6 @@ class Day14VC: AoCVC, AdventDay {
             }
         }
         
-        self.setSolution2("\(bestGenerated)")
+        self.setSolution(challenge: 1, text: "\(bestGenerated)")
     }
 }

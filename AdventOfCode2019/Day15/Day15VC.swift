@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day15VC: AoCVC, AdventDay {
+class Day15VC: AoCVC, AdventDay, InputLoadable {
     class RepairDroid {
         enum DroidStatus: Int {
             case hitWall = 0
@@ -93,22 +93,20 @@ class Day15VC: AoCVC, AdventDay {
         
         func drawMap() {
             let gridInfo = IntPoint.gridInfo(from: self.mazeMap.keys)
-            let allPoints = IntPoint.gridPoints(x: gridInfo.width, y: gridInfo.height)
+            let allPoints = gridInfo.allPoints
             var prevY: Int? = nil
             var mapString = "------------------------------------------------------\n"
-            for rawPoint in allPoints {
-                let actualPoint = rawPoint + gridInfo.minExtents
-                
-                if prevY != actualPoint.y {
+            for point in allPoints {
+                if prevY != point.y {
                     mapString.append("\n")
-                    prevY = actualPoint.y
+                    prevY = point.y
                 }
-                if actualPoint == IntPoint.origin {
+                if point == IntPoint.origin {
                     mapString.append("S")
-                } else if actualPoint == self.currentPosition {
+                } else if point == self.currentPosition {
                     mapString.append("D")
                 } else {
-                    if let mapTile = self.mazeMap[actualPoint] {
+                    if let mapTile = self.mazeMap[point] {
                         switch mapTile {
                         case .empty: mapString.append(".")
                         case .oxygen: mapString.append("O")
@@ -136,7 +134,7 @@ class Day15VC: AoCVC, AdventDay {
     var repairDroid: RepairDroid!
     
     func loadInput() {
-        let lines = FileLoader.loadText(fileName: "Day15Input").first!.components(separatedBy: ",")
+        let lines = "Day15Input".loadAsTextStringArray().first!.components(separatedBy: ",")
         let memory = lines.map({Int($0)!})
         self.repairDroid = RepairDroid(program: memory)
     }
@@ -176,11 +174,11 @@ class Day15VC: AoCVC, AdventDay {
         self.aStar.computeShortestPaths(startNode: startNode)
         let node = self.aStar.closed.first(where: {$0.position == end})!
         
-        self.setSolution1("\(node.g)")
+        self.setSolution(challenge: 0, text: "\(node.g)")
     }
     
     func solveSecond() {
         let maxPathLength = self.aStar.closed.max(by: {$0.g < $1.g})!.g
-        self.setSolution2("\(maxPathLength)")
+        self.setSolution(challenge: 1, text: "\(maxPathLength)")
     }
 }

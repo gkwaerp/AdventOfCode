@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day12VC: AoCVC, AdventDay {
+class Day12VC: AoCVC, AdventDay, InputLoadable {
     struct Moon {
         struct VelPos: Equatable {
             var vel: Int
@@ -86,7 +86,7 @@ class Day12VC: AoCVC, AdventDay {
     private var moons = [Moon]()
     
     func loadInput() {
-        let lines = FileLoader.loadText(fileName: "Day12Input")
+        let lines = "Day12Input".loadAsTextStringArray()
             .map({$0.replacingOccurrences(of: "<", with: "")
                 .replacingOccurrences(of: ">", with: "")
                 .replacingOccurrences(of: " ", with: "")
@@ -110,7 +110,7 @@ class Day12VC: AoCVC, AdventDay {
                 self.moons[index].calcZ(otherMoons: moonsCopy)
             }
         }
-        self.setSolution1("\(moons.reduce(0, {$0 + $1.totalEnergy()}))")
+        self.setSolution(challenge: 0, text: "\(moons.reduce(0, {$0 + $1.totalEnergy()}))")
     }
     
     func solveSecond() {
@@ -136,7 +136,7 @@ class Day12VC: AoCVC, AdventDay {
                 finished = self.moons.allSatisfy({$0.sameAsInitial})
             }
         }
-        let leastCommonMultiple = numSteps.reduce(numSteps.first!, {Math.leastCommonMultiple($0, $1)})
-        self.setSolution2("\(leastCommonMultiple)")
+        let leastCommonMultiple = numSteps.reduce(numSteps.first!, {Math.leastCommonMultiple($0!, $1)})!
+        self.setSolution(challenge: 1, text: "\(leastCommonMultiple)")
     }
 }

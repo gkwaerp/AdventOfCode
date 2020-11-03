@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day10VC: AoCVC, AdventDay {
+class Day10VC: AoCVC, AdventDay, InputLoadable {
     class Asteroid {
         let point: IntPoint
         var observables = [Double: [IntPoint]]() // angle --> points at that angle. Points sorted by distance, ascending.
@@ -57,7 +57,7 @@ class Day10VC: AoCVC, AdventDay {
 
     private var asteroids = [Asteroid]()
     func loadInput() {
-        let lines = FileLoader.loadText(fileName: "Day10Input")
+        let lines = "Day10Input".loadAsTextStringArray()
         for (y, line) in lines.enumerated() {
             let chars = line.toStringArray()
             for (x, char) in chars.enumerated() {
@@ -83,11 +83,11 @@ class Day10VC: AoCVC, AdventDay {
                 self.bestAsteroid = asteroid
             }
         }
-        self.setSolution1("\(bestCount)")
+        self.setSolution(challenge: 0, text: "\(bestCount)")
     }
     
     func solveSecond() {
         let lastDestroyed = bestAsteroid.destroyOthers(numToDestroy: 200)
-        self.setSolution2("\(lastDestroyed.x * 100 + lastDestroyed.y)")
+        self.setSolution(challenge: 1, text: "\(lastDestroyed.x * 100 + lastDestroyed.y)")
     }
 }

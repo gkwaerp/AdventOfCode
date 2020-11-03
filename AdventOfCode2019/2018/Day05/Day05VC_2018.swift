@@ -14,7 +14,7 @@ fileprivate extension String {
     }
 }
 
-class Day05VC_2018: AoCVC, AdventDay {
+class Day05VC_2018: AoCVC, AdventDay, InputLoadable {
     private var inputString = [String]() // Array to allow for subscript etc.
     private var initialInput = [String]()
 
@@ -44,13 +44,13 @@ class Day05VC_2018: AoCVC, AdventDay {
     
     func loadInput() {
         self.reset()
-        self.initialInput = FileLoader.loadText(fileName: "Day05Input_2018").first!.toStringArray()
+        self.initialInput = "Day05Input_2018".loadAsTextStringArray().first!.toStringArray()
     }
     
     func solveFirst() {
         self.reset()
         self.performReactions()
-        self.setSolution1("\(self.inputString.count)")
+        self.setSolution(challenge: 0, text: "\(self.inputString.count)")
     }
     
     func solveSecond() {
@@ -66,6 +66,6 @@ class Day05VC_2018: AoCVC, AdventDay {
                 bestSolutionFound = inputString.count
             }
         }
-        self.setSolution2("\(bestSolutionFound)")
+        self.setSolution(challenge: 1, text: "\(bestSolutionFound)")
     }
 }

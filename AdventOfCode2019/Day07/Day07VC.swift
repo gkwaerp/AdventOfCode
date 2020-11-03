@@ -8,11 +8,11 @@
 
 import UIKit
 
-class Day07VC: AoCVC, AdventDay {
+class Day07VC: AoCVC, AdventDay, InputLoadable {
     private var machines = [IntMachine]()
     
     func loadInput() {
-        let line = FileLoader.loadText(fileName: "Day07Input").first!
+        let line = "Day07Input".loadAsTextStringArray().first!
         let ints = line.components(separatedBy: ",").compactMap({Int($0)})
         for i in 0..<5 {
             self.machines.append(IntMachine())
@@ -70,7 +70,7 @@ class Day07VC: AoCVC, AdventDay {
             bestOutputSignal = max(bestOutputSignal, outputs.last!)
         }
         
-        self.setSolution1("\(bestOutputSignal)")
+        self.setSolution(challenge: 0, text: "\(bestOutputSignal)")
     }
     
     func solveSecond() {
@@ -118,6 +118,6 @@ class Day07VC: AoCVC, AdventDay {
             bestOutputSignal = max(bestOutputSignal, bestThisIteration)
         }
 
-        self.setSolution2("\(bestOutputSignal)")
+        self.setSolution(challenge: 1, text: "\(bestOutputSignal)")
     }
 }

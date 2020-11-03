@@ -8,12 +8,11 @@
 
 import UIKit
 
-class Day02VC_2018: AoCVC, AdventDay {
+class Day02VC_2018: AoCVC, AdventDay, InputLoadable {
     var boxIds = Set<String>()
 
-
     func loadInput() {
-        self.boxIds = Set(FileLoader.loadText(fileName: "Day2Input_2018"))
+        self.boxIds = Set("Day2Input_2018".loadAsTextStringArray())
     }
 
     func solveFirst() {
@@ -37,7 +36,7 @@ class Day02VC_2018: AoCVC, AdventDay {
         }
 
         let checksum = count2 * count3
-        self.setSolution1("\(checksum)")
+        self.setSolution(challenge: 0, text: "\(checksum)")
     }
 
     func solveSecond() {
@@ -49,7 +48,7 @@ class Day02VC_2018: AoCVC, AdventDay {
                 var filteredId = id
                 filteredId.remove(at: String.Index(utf16Offset: charPositionIndex, in: id))
                 if !alreadySeen[charPositionIndex].insert(filteredId).inserted {
-                    self.setSolution2(filteredId)
+                    self.setSolution(challenge: 1, text: filteredId)
                     return
                 }
             }

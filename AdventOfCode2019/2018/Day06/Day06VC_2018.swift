@@ -8,10 +8,10 @@
 
 import UIKit
 
-class Day06VC_2018: AoCVC, AdventDay {
+class Day06VC_2018: AoCVC, AdventDay, InputLoadable {
     private var coordinates = [IntPoint]()
     func loadInput() {
-        let input = FileLoader.loadText(fileName: "Day06Input_2018")
+        let input = "Day06Input_2018".loadAsTextStringArray()
         for line in input {
             let split = line.replacingOccurrences(of: " ", with: "").split(separator: ",")
             let x = Int(split[0])!
@@ -22,15 +22,14 @@ class Day06VC_2018: AoCVC, AdventDay {
     
     func solveFirst() {
         let gridInfo = IntPoint.gridInfo(from: self.coordinates)
-        let allPoints = IntPoint.gridPoints(x: gridInfo.width, y: gridInfo.height)
+        let allPoints = gridInfo.allPoints
 
         var dictionary = [IntPoint: (IntPoint, Int)]() // Gridpoint --> closest coordinate & distance. Nil if multiple share same distance.
-        for rawPoint in allPoints {
-            let actualPoint = rawPoint + gridInfo.minExtents
+        for point in allPoints {
             var shortestDistance = Int.max
             var bestCoordinate: IntPoint? = nil
             for coordinate in self.coordinates {
-                let distance = actualPoint.manhattanDistance(to: coordinate)
+                let distance = point.manhattanDistance(to: coordinate)
                 if distance < shortestDistance {
                     shortestDistance = distance
                     bestCoordinate = coordinate
@@ -39,7 +38,7 @@ class Day06VC_2018: AoCVC, AdventDay {
                 }
             }
             if let bestCoordinate = bestCoordinate {
-                dictionary[actualPoint] = (bestCoordinate, shortestDistance)
+                dictionary[point] = (bestCoordinate, shortestDistance)
             }
         }
 
@@ -75,7 +74,7 @@ class Day06VC_2018: AoCVC, AdventDay {
             dictionary.values.map({$0.0 == coordinate}).filter({$0}).count
         }.max()!
 
-        self.setSolution1("\(best)")
+        self.setSolution(challenge: 0, text: "\(best)")
     }
     
     func solveSecond() {

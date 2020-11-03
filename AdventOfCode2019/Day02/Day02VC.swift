@@ -8,11 +8,11 @@
 
 import UIKit
 
-class Day02VC: AoCVC, AdventDay {
+class Day02VC: AoCVC, AdventDay, InputLoadable {
     private var machine = IntMachine()
 
     func loadInput() {
-        let line = FileLoader.loadText(fileName: "Day02Input").first!
+        let line = "Day02Input".loadAsTextStringArray().first!
         let ints = line.components(separatedBy: ",").compactMap({Int($0)})
         self.machine.loadNewProgram(memory: ints)
     }
@@ -22,7 +22,7 @@ class Day02VC: AoCVC, AdventDay {
         let result = self.machine.run(outputHandler: nil)
         switch result {
         case .exitedSuccessfully(let memoryAtZeroIndex):
-            self.setSolution1("\(memoryAtZeroIndex)")
+            self.setSolution(challenge: 0, text: "\(memoryAtZeroIndex)")
         default: break
         }
     }
@@ -35,7 +35,7 @@ class Day02VC: AoCVC, AdventDay {
                 switch result {
                 case .exitedSuccessfully(let memoryAtZeroIndex):
                     if memoryAtZeroIndex == 19690720 {
-                        self.setSolution2("\(noun * 100 + verb)")
+                        self.setSolution(challenge: 1, text: "\(noun * 100 + verb)")
                         return
                     }
                 default: break

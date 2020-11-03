@@ -8,11 +8,11 @@
 
 import UIKit
 
-class Day05VC: AoCVC, AdventDay {
+class Day05VC: AoCVC, AdventDay, InputLoadable {
     private var machine = IntMachine()
 
     func loadInput() {
-        let line = FileLoader.loadText(fileName: "Day05Input").first!
+        let line = "Day05Input".loadAsTextStringArray().first!
         let ints = line.components(separatedBy: ",").compactMap({Int($0)})
         self.machine.loadNewProgram(memory: ints)
     }
@@ -24,7 +24,7 @@ class Day05VC: AoCVC, AdventDay {
             outputs.append(outputValue)
             print(outputValue)
         })
-        self.setSolution1("\(outputs.last!)")
+        self.setSolution(challenge: 0, text: "\(outputs.last!)")
     }
 
     func solveSecond() {
@@ -34,6 +34,6 @@ class Day05VC: AoCVC, AdventDay {
         self.machine.run(outputHandler: { (outputValue) in
             outputs.append(outputValue)
         })
-        self.setSolution2("\(outputs.first!)")
+        self.setSolution(challenge: 1, text: "\(outputs.first!)")
     }
 }

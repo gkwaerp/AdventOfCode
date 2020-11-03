@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day03VC_2018: AoCVC, AdventDay {
+class Day03VC_2018: AoCVC, AdventDay, InputLoadable {
     private struct Claim: Hashable {
         let id: Int
         let position: IntPoint
@@ -41,7 +41,7 @@ class Day03VC_2018: AoCVC, AdventDay {
     private var claims = Set<Claim>()
 
     func loadInput() {
-        self.claims = Set(FileLoader.loadText(fileName: "Day03Input_2018").map({Claim(string: $0)}))
+        self.claims = Set("Day03Input_2018".loadAsTextStringArray().map({Claim(string: $0)}))
     }
 
     func solveFirst() {
@@ -55,7 +55,7 @@ class Day03VC_2018: AoCVC, AdventDay {
             }
         }
 
-        self.setSolution1("\(duplicated.count)")
+        self.setSolution(challenge: 0, text: "\(duplicated.count)")
     }
 
     func solveSecond() {
@@ -72,6 +72,6 @@ class Day03VC_2018: AoCVC, AdventDay {
             }
         }
 
-        self.setSolution2("\(nonOverlappingClaims.first!.id)")
+        self.setSolution(challenge: 1, text: "\(nonOverlappingClaims.first!.id)")
     }
 }

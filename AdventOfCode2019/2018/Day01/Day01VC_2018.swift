@@ -8,16 +8,16 @@
 
 import UIKit
 
-class Day01VC_2018: AoCVC, AdventDay {
+class Day01VC_2018: AoCVC, AdventDay, InputLoadable {
     private var frequencyChanges = [Int]()
 
     func loadInput() {
-        self.frequencyChanges = FileLoader.loadText(fileName: "Day1Input_2018").compactMap({Int($0)})
+        self.frequencyChanges = "Day1Input_2018".loadAsTextStringArray().compactMap({Int($0)})
     }
 
     func solveFirst() {
         let result = self.frequencyChanges.reduce(0, +)
-        self.setSolution1("\(result)")
+        self.setSolution(challenge: 0, text: "\(result)")
     }
 
     func solveSecond() {
@@ -26,7 +26,7 @@ class Day01VC_2018: AoCVC, AdventDay {
         while (true) {
             for change in self.frequencyChanges {
                 if !set.insert(currentFrequency).inserted {
-                    self.setSolution2("\(currentFrequency)")
+                    self.setSolution(challenge: 1, text: "\(currentFrequency)")
                     return
                 }
                 currentFrequency += change

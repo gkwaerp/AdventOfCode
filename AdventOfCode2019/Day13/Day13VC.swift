@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day13VC: AoCVC, AdventDay {
+class Day13VC: AoCVC, AdventDay, InputLoadable {
     class ArcadeMachine {
         enum GameObject: Int {
             case empty = 0
@@ -77,7 +77,7 @@ class Day13VC: AoCVC, AdventDay {
         
         func parseScreen() {
             let gridInfo = IntPoint.gridInfo(from: self.gameBoard.keys)
-            let allPoints = IntPoint.gridPoints(x: gridInfo.width, y: gridInfo.height)
+            let allPoints = gridInfo.allPoints
             for rawPoint in allPoints {
                 let actualPoint = rawPoint + gridInfo.minExtents
                 if let gameObject = self.gameBoard[actualPoint] {
@@ -92,16 +92,15 @@ class Day13VC: AoCVC, AdventDay {
         
         func drawScreen() {
             let gridInfo = IntPoint.gridInfo(from: self.gameBoard.keys)
-            let allPoints = IntPoint.gridPoints(x: gridInfo.width, y: gridInfo.height)
+            let allPoints = gridInfo.allPoints
             var prevY = -1
             var currString = "SCORE: \(self.currentScore)\n"
-            for rawPoint in allPoints {
-                let actualPoint = rawPoint + gridInfo.minExtents
-                if prevY != actualPoint.y {
+            for point in allPoints {
+                if prevY != point.y {
                     currString.append("\n")
-                    prevY = actualPoint.y
+                    prevY = point.y
                 }
-                let gameObject = self.gameBoard[actualPoint] ?? .empty
+                let gameObject = self.gameBoard[point] ?? .empty
                 currString.append("\(gameObject.asText())")
             }
             currString.append("\n\n")
@@ -119,7 +118,7 @@ class Day13VC: AoCVC, AdventDay {
     private var arcadeMachine: ArcadeMachine!
     
     func loadInput() {
-        let line = FileLoader.loadText(fileName: "Day13Input").first!
+        let line = "Day13Input".loadAsTextStringArray().first!
         let ints = line.components(separatedBy: ",").compactMap({Int($0)})
         self.arcadeMachine = ArcadeMachine(program: ints)
     }
@@ -127,7 +126,7 @@ class Day13VC: AoCVC, AdventDay {
     func solveFirst() {
         self.arcadeMachine.reset(freePlay: false)
         self.arcadeMachine.run()
-        self.setSolution1("\(self.arcadeMachine.gameBoard.values.filter({$0 == .block}).count)")
+        self.setSolution(challenge: 0, text: "\(self.arcadeMachine.gameBoard.values.filter({$0 == .block}).count)")
     }
     
     func solveSecond() {
@@ -144,7 +143,7 @@ class Day13VC: AoCVC, AdventDay {
             default: break
             }
         }
-        self.setSolution2("\(self.arcadeMachine.currentScore)")
+        self.setSolution(challenge: 1, text: "\(self.arcadeMachine.currentScore)")
     }
     
     func generateInput() -> Int {

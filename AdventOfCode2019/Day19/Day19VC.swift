@@ -8,11 +8,11 @@
 
 import UIKit
 
-class Day19VC: AoCVC, AdventDay {
+class Day19VC: AoCVC, AdventDay, InputLoadable {
     private let machine = IntMachine()
     
     func loadInput() {
-        let lines = FileLoader.loadText(fileName: "Day19Input").first!.components(separatedBy: ",")
+        let lines = "Day19Input".loadAsTextStringArray().first!.components(separatedBy: ",")
         let program = lines.map({Int("\($0)")!})
         self.machine.loadNewProgram(memory: program)
     }
@@ -29,7 +29,7 @@ class Day19VC: AoCVC, AdventDay {
                 }
             }
         }
-        self.setSolution1("\(numAffected)")
+        self.setSolution(challenge: 0, text: "\(numAffected)")
     }
     
     // Should be possible to math this better by checking tractor beam slope, etc.
@@ -54,7 +54,7 @@ class Day19VC: AoCVC, AdventDay {
                                         IntPoint(x: right, y: top)]
                     
                     if otherCorners.allSatisfy({self.check(x: $0.x, y: $0.y)}) {
-                        self.setSolution2("\(x * 10000 + top)")
+                        self.setSolution(challenge: 1, text: "\(x * 10000 + top)")
                         return
                     } else {
                         break xLoop

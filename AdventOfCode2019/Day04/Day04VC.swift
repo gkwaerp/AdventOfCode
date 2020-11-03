@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Day04VC: AoCVC, AdventDay {
+class Day04VC: AoCVC, AdventDay, InputLoadable {
     private struct Validator {
         var potentials = [Int]()
         
@@ -62,11 +62,11 @@ class Day04VC: AoCVC, AdventDay {
     
     func solveFirst() {
         let solution = self.validator.numMatching(strict: false)
-        self.setSolution1("\(solution)")
+        self.setSolution(challenge: 0, text: "\(solution)")
     }
     
     func solveSecond() {
         let solution = self.validator.numMatching(strict: true)
-        self.setSolution2("\(solution)")
+        self.setSolution(challenge: 1, text: "\(solution)")
     }
 }

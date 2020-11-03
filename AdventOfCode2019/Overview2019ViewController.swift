@@ -15,6 +15,30 @@ class Overview2019ViewController: UIViewController {
     private let verticalSpacing: CGFloat = 4
     private let horizontalSpacing: CGFloat = 16
     
+    //Days start at 1, not 0.
+    private var calendarDays: [Int: AoCVC.Type] = [1 : Day01VC.self,
+                                                   2 : Day02VC.self,
+                                                   3 : Day03VC.self,
+                                                   4 : Day04VC.self,
+                                                   5 : Day05VC.self,
+                                                   6 : Day06VC.self,
+                                                   7 : Day07VC.self,
+                                                   8 : Day08VC.self,
+                                                   9 : Day09VC.self,
+                                                   10 : Day10VC.self,
+                                                   11 : Day11VC.self,
+                                                   12 : Day12VC.self,
+                                                   13 : Day13VC.self,
+                                                   14 : Day14VC.self,
+                                                   15 : Day15VC.self,
+                                                   16 : Day16VC.self,
+                                                   17 : Day17VC.self,
+                                                   19 : Day19VC.self,
+                                                   20 : Day20VC.self,
+                                                   22 : Day22VC.self,
+                                                   24 : Day24VC.self
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,7 +77,7 @@ class Overview2019ViewController: UIViewController {
         button.setTitle("Day \(dayString)", for: .normal)
         button.tag = day
         button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
-        button.isEnabled = (self.getViewController(for: day) != nil)
+        button.isEnabled = (self.calendarDays[day] != nil)
         return button
     }
     
@@ -86,36 +110,10 @@ class Overview2019ViewController: UIViewController {
     }
     
     @objc private func buttonTapped(sender: UIButton) {
-        if let vc = self.getViewController(for: sender.tag) {
-            vc.modalPresentationStyle = .overFullScreen
-            vc.title = String(format: "Day %02d", sender.tag)
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-
-    private func getViewController(for day: Int) -> UIViewController? {
-        switch day {
-        case 1: return Day01VC()
-        case 2: return Day02VC()
-        case 3: return Day03VC()
-        case 4: return Day04VC()
-        case 5: return Day05VC()
-        case 6: return Day06VC()
-        case 7: return Day07VC()
-        case 8: return Day08VC()
-        case 9: return Day09VC()
-        case 10: return Day10VC()
-        case 11: return Day11VC()
-        case 12: return Day12VC()
-        case 13: return Day13VC()
-        case 14: return Day14VC()
-        case 15: return Day15VC()
-        case 16: return Day16VC()
-        case 17: return Day17VC()
-        case 19: return Day19VC()
-        case 20: return Day20VC()
-        case 22: return Day22VC()
-        default: return nil
-        }
+        guard let vcType = self.calendarDays[sender.tag] else { fatalError("Invalid VC.") }
+        let vc = vcType.init()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.title = String(format: "Day %02d", sender.tag)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -8,21 +8,21 @@
 
 import UIKit
 
-class Day01VC: AoCVC, AdventDay {
+class Day01VC: AoCVC, AdventDay, InputLoadable {
     private var modules = [Int]()
 
     func loadInput() {
-        self.modules = FileLoader.loadText(fileName: "Day01Input").compactMap({Int($0)})
+        self.modules = "Day01Input".loadAsTextStringArray().compactMap({Int($0)})
     }
 
     func solveFirst() {
         let fuel = self.modules.reduce(0, {$0 + self.getFuel(for: $1)})
-        self.setSolution1("\(fuel)")
+        self.setSolution(challenge: 0, text: "\(fuel)")
     }
 
     func solveSecond() {
         let fuel = self.modules.reduce(0, {$0 + self.getFuel(for: $1, recursive: true)})
-        self.setSolution2("\(fuel)")
+        self.setSolution(challenge: 1, text: "\(fuel)")
     }
 
     private func getFuel(for mass: Int, recursive: Bool = false) -> Int {

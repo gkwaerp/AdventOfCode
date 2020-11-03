@@ -8,11 +8,11 @@
 
 import UIKit
 
-class Day17VC: AoCVC, AdventDay {
+class Day17VC: AoCVC, AdventDay, InputLoadable {
     
     let machine = IntMachine()
     func loadInput() {
-        let line = FileLoader.loadText(fileName: "Day17Input").first!.components(separatedBy: ",")
+        let line = "Day17Input".loadAsTextStringArray().first!.components(separatedBy: ",")
         let program = line.map({Int($0)!})
         self.machine.loadNewProgram(memory: program)
     }
@@ -35,7 +35,7 @@ class Day17VC: AoCVC, AdventDay {
             intersectionPoint.x * intersectionPoint.y
         }.reduce(0, +)
         
-        self.setSolution1("\(result)")
+        self.setSolution(challenge: 0, text: "\(result)")
     }
     
     enum MapTileType {
@@ -90,20 +90,19 @@ class Day17VC: AoCVC, AdventDay {
     func findIntersections(in map: [IntPoint: MapTileType]) -> [IntPoint] {
         var intersections = [IntPoint]()
         let gridInfo = IntPoint.gridInfo(from: map.keys)
-        let gridPoints = IntPoint.gridPoints(x: gridInfo.width, y: gridInfo.height)
-        for rawPoint in gridPoints {
-            let actualPoint = rawPoint + gridInfo.minExtents
-            guard map[actualPoint] == .scaffold else { continue }
+        let gridPoints = gridInfo.allPoints
+        for point in gridPoints {
+            guard map[point] == .scaffold else { continue }
             
             var numClose = 0
             for direction in Direction.allCases {
-                let checkedPos = actualPoint + direction.movementVector
+                let checkedPos = point + direction.movementVector
                 if map[checkedPos] == .scaffold {
                     numClose += 1
                 }
             }
             if numClose >= 3 {
-                intersections.append(actualPoint)
+                intersections.append(point)
             }
         }
         
@@ -132,6 +131,6 @@ class Day17VC: AoCVC, AdventDay {
         self.machine.run { (outputValue) in
             lastOutput = outputValue
         }
-        self.setSolution2("\(lastOutput)")
+        self.setSolution(challenge: 1, text: "\(lastOutput)")
     }
 }
